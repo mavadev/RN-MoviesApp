@@ -8,9 +8,9 @@ interface Props {
   height?: number;
 }
 
-export default function PosterCarousel({movies, height = 440}: Props) {
+export default function PosterCarousel({movies}: Props) {
   return (
-    <View style={{height}}>
+    <View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {movies.map(movie => (
           <MoviePoster key={movie.id} movie={movie} />
