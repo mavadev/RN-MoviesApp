@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react';
-import {Movie} from '../../core/entitites/movie.entity';
-
-import * as UseCases from '../../core/use-cases';
+import {getMoviesUseCase} from '../../core/use-cases';
+import type {Movie} from '../../core/entitites/movie.entity';
+import {MovieList} from '../../core/constants/movieList.enum';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
 
 export const useMovies = () => {
   const [isLoading, setIsLoading] = useState(true);
+
   const [nowPlaying, setNowPlaying] = useState<Movie[]>([]);
   const [popular, setPopular] = useState<Movie[]>([]);
   const [topRated, setTopRated] = useState<Movie[]>([]);
@@ -17,10 +18,10 @@ export const useMovies = () => {
 
   const initialLoad = async () => {
     // Promesas
-    const nowPlayingPromise = UseCases.moviesNowPlayingUseCase(movieDBFetcher);
-    const popularPromise = UseCases.moviesPopularUseCase(movieDBFetcher);
-    const topRatedPromise = UseCases.moviesTopRatedUseCase(movieDBFetcher);
-    const upcomingPromise = UseCases.moviesUpComingUseCase(movieDBFetcher);
+    const nowPlayingPromise = getMoviesUseCase(movieDBFetcher, MovieList.NowPlaying);
+    const popularPromise = getMoviesUseCase(movieDBFetcher, MovieList.Popular);
+    const topRatedPromise = getMoviesUseCase(movieDBFetcher, MovieList.TopRated);
+    const upcomingPromise = getMoviesUseCase(movieDBFetcher, MovieList.Upcoming);
 
     // Respuestas
     const [nowPlayingMovies, popularMovies, topRatedMovies, upComingMovies] = await Promise.all([
@@ -39,11 +40,35 @@ export const useMovies = () => {
     setIsLoading(false);
   };
 
+  const updateMovies = async (category: MovieList, page: number) => {
+    const newMovies = await getMoviesUseCase(movieDBFetcher, category, {page});
+
+    switch (category) {
+      case MovieList.NowPlaying:
+        setNowPlaying(prev => [...prev, ...newMovies]);
+        break;
+      case MovieList.Popular:
+        setPopular(prev => [...prev, ...newMovies]);
+        break;
+      case MovieList.TopRated:
+        setTopRated(prev => [...prev, ...newMovies]);
+        break;
+      case MovieList.Upcoming:
+        setUpComing(prev => [...prev, ...newMovies]);
+        break;
+      default:
+        break;
+    }
+  };
+
   return {
     isLoading,
     nowPlaying,
     popular,
     topRated,
     upComing,
+
+    // Métodos
+    updateMovies,
   };
 };
