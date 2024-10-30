@@ -8,7 +8,7 @@ import type {Movie} from '../../../core/entitites/movie.entity';
 interface Props {
   movies: Movie[];
   title?: string;
-  loadMovies: (page: number) => void;
+  loadMovies?: (page: number) => void;
 }
 
 export default function HorizontalCarousel({movies, title, loadMovies}: Props) {
@@ -16,7 +16,7 @@ export default function HorizontalCarousel({movies, title, loadMovies}: Props) {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (currentPage != 1) loadMovies(currentPage);
+    if (currentPage != 1 && loadMovies) loadMovies(currentPage);
   }, [currentPage]);
 
   useEffect(() => {

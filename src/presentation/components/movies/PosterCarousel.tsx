@@ -1,7 +1,8 @@
-import {Text, View} from 'react-native';
-import {Movie} from '../../../core/entitites/movie.entity';
+import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+
 import MoviePoster from './MoviePoster';
+import type {Movie} from '../../../core/entitites/movie.entity';
 
 interface Props {
   movies: Movie[];

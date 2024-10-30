@@ -3,8 +3,8 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {useMovies} from '../../hooks/useMovies';
-import {HorizontalCarousel, PosterCarousel} from '../../components/';
 import {MovieList} from '../../../core/constants/movieList.enum';
+import {HorizontalCarousel, PosterCarousel} from '../../components/movies';
 
 export default function HomeScreen() {
   const {top} = useSafeAreaInsets();
