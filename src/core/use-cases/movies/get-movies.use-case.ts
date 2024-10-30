@@ -19,7 +19,7 @@ export const getMoviesUseCase = async (
         page: options?.page ?? 1,
       },
     });
-    return nowPlaying.results.map(MovieMapper.fromMovieDBResultToEntity);
+    return nowPlaying.results.map(MovieMapper.fromMovieResultToMovieEntity);
   } catch (err) {
     throw new Error(`Error fetching movies - ${pathURL}: ${err}`);
   }

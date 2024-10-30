@@ -1,16 +1,34 @@
-import type {Movie} from '../../core/entitites/movie.entity';
-import type {MovieResult as MovieResult} from '../interfaces/movie-db.responses';
+import type {FullMovie, Movie} from '../../core/entitites/movie.entity';
+import type {FullMovieResponse, MovieResponse} from '../interfaces/movie-db.responses';
 
 export class MovieMapper {
-  static fromMovieDBResultToEntity(result: MovieResult): Movie {
+  static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
+
+  static fromMovieResultToMovieEntity(result: MovieResponse): Movie {
     return {
       id: result.id,
+      poster: `${MovieMapper.PATH_IMAGE}${result.poster_path}`,
       title: result.title,
+    };
+  }
+
+  static fromFullMovieResultToFullMovieEntity(result: FullMovieResponse): FullMovie {
+    return {
+      backdrop: `${MovieMapper.PATH_IMAGE}${result.backdrop_path}`,
+      budget: result.budget,
+      collection: result.belongs_to_collection,
       description: result.overview,
-      releaseDate: new Date(result.release_date),
+      duration: result.runtime,
+      genres: result.genres.map(genre => genre.name),
+      homepage: result.homepage,
+      id: result.id,
+      isRestricted: result.adult,
+      poster: `${MovieMapper.PATH_IMAGE}${result.poster_path}`,
+      productionCompanies: result.production_companies.map(company => company.name),
       rating: result.vote_average,
-      poster: `https://image.tmdb.org/t/p/w500${result.poster_path}`,
-      backdrop: `https://image.tmdb.org/t/p/w500${result.backdrop_path}`,
+      releaseDate: new Date(result.release_date),
+      status: result.status,
+      title: result.title,
     };
   }
 }

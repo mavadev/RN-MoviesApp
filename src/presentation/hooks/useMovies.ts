@@ -13,10 +13,10 @@ export const useMovies = () => {
   const [upComing, setUpComing] = useState<Movie[]>([]);
 
   useEffect(() => {
-    initialLoad();
+    loadMovies();
   }, []);
 
-  const initialLoad = async () => {
+  const loadMovies = async () => {
     // Promesas
     const nowPlayingPromise = getMoviesUseCase(movieDBFetcher, MovieList.NowPlaying);
     const popularPromise = getMoviesUseCase(movieDBFetcher, MovieList.Popular);
