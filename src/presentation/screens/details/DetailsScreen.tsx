@@ -2,14 +2,14 @@ import {Text, View} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 
 import {useMovie} from '../../hooks/useMovie';
-import {MovieHeader, MovieDetails} from '../../components/movie';
+import {MovieHeader, MovieDetails, MovieActors} from '../../components/movie';
 import type {RootStackParams} from '../../navigation/MainNavigation';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
 export default function DetailsScreen({route}: Props) {
   const {movieId} = route.params;
-  const {movie, isLoading} = useMovie(movieId);
+  const {movie, actors, isLoading} = useMovie(movieId);
 
   if (isLoading) return <Text>Cargando</Text>;
 
@@ -26,6 +26,7 @@ export default function DetailsScreen({route}: Props) {
         title={movie?.title!}
       />
       {/* Actores */}
+      <MovieActors actors={actors!} />
       {/* Colección */}
     </View>
   );

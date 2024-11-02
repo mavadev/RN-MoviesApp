@@ -1,7 +1,7 @@
 // Movies
-export interface MoviesResponse {
+export interface MovieDBMoviesResponse {
   page: number;
-  results: MovieResponse[];
+  results: MovieDBMovieResponse[];
   total_pages: number;
   total_results: number;
 }
@@ -11,7 +11,7 @@ export interface Dates {
   minimum: Date;
 }
 
-export interface MovieResponse {
+export interface MovieDBMovieResponse {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -29,7 +29,7 @@ export interface MovieResponse {
 }
 
 // Movie
-export interface FullMovieResponse {
+export interface MovieDBFullMovieResponse {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: null;
@@ -66,4 +66,42 @@ export interface ProductionCompany {
   logo_path: string;
   name: string;
   origin_country: string;
+}
+
+export interface MovieDBCastResponse {
+  id: number;
+  cast: MovieDBCast[];
+  crew: MovieDBCast[];
+}
+
+export interface MovieDBCast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: Department;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: null | string;
+  cast_id?: number;
+  character?: string;
+  credit_id: string;
+  order?: number;
+  department?: Department;
+  job?: string;
+}
+
+export enum Department {
+  Acting = 'Acting',
+  Art = 'Art',
+  Camera = 'Camera',
+  CostumeMakeUp = 'Costume & Make-Up',
+  Crew = 'Crew',
+  Directing = 'Directing',
+  Editing = 'Editing',
+  Lighting = 'Lighting',
+  Production = 'Production',
+  Sound = 'Sound',
+  VisualEffects = 'Visual Effects',
+  Writing = 'Writing',
 }
