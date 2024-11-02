@@ -2,10 +2,11 @@ import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import type {Collection} from '../../../core/entitites/movie.entity';
 
 interface Props {
-  collection: Collection;
+  collection: Collection | null;
 }
 
 export default function MovieCollection({collection}: Props) {
+  if (!collection) return <></>;
   return (
     <Pressable style={styles.container} onPress={() => {}}>
       <Image style={styles.backdrop} source={{uri: collection.backdrop}} />

@@ -61,12 +61,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   containerLogo: {
-    height: 40,
+    height: 30,
     bottom: 70,
     paddingHorizontal: 20,
     alignItems: 'center',
   },
   logo: {
     height: 110,
+    maxWidth: '80%',
+    objectFit: 'contain',
   },
 });

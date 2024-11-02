@@ -17,22 +17,15 @@ export class MovieMapper {
   }
 
   static fromFullMovieResultToFullMovieEntity(result: MovieDBFullMovieResponse): FullMovie {
-    const {
-      id: collectionID,
-      name: collectionName,
-      poster_path: collectionPoster,
-      backdrop_path: collectionBackdrop,
-    } = result.belongs_to_collection;
-
     return {
       backdrop: `${MovieMapper.PATH_IMAGE}${result.backdrop_path}`,
       budget: result.budget,
       collection: result.belongs_to_collection
         ? {
-            id: collectionID,
-            name: collectionName,
-            poster: `${MovieMapper.PATH_IMAGE}${collectionPoster}`,
-            backdrop: `${MovieMapper.PATH_IMAGE}${collectionBackdrop}`,
+            id: result.belongs_to_collection.id,
+            name: result.belongs_to_collection.name,
+            poster: `${MovieMapper.PATH_IMAGE}${result.belongs_to_collection.poster_path}`,
+            backdrop: `${MovieMapper.PATH_IMAGE}${result.belongs_to_collection.backdrop_path}`,
           }
         : null,
       description: result.overview,

@@ -13,15 +13,21 @@ export const getImagesUseCase = async (
   movieId: number,
 ): Promise<ListImages> => {
   try {
-    // Obtener datoss en español
-    let {logos, backdrops} = await fetcher.get<MovieDBMovieImagesResponse>(`/${movieId}/images`);
+    // Obtener logo en español
+    let {logos} = await fetcher.get<MovieDBMovieImagesResponse>(`/${movieId}/images`);
 
-    // Si no hay logos o backdrops en español, intenta en inglés
-    if (logos.length === 0) {
-      ({logos, backdrops} = await fetcher.get<MovieDBMovieImagesResponse>(`/${movieId}/images`, {
+    // Capturas de la Película (lenguaje en null)
+    const {backdrops} = await fetcher.get<MovieDBMovieImagesResponse>(`/${movieId}/images`, {
+      params: {language: null},
+    });
+
+    // Obtener logo en inglés, caso no exista en español
+    if (logos.length <= 0) {
+      ({logos} = await fetcher.get<MovieDBMovieImagesResponse>(`/${movieId}/images`, {
         params: {language: 'en'},
       }));
     }
+
     const logo = logos.length > 0 ? MovieMapper.fromMovieDBImageToEntity(logos[0]) : null;
     const captures = backdrops.map(MovieMapper.fromMovieDBImageToEntity);
 

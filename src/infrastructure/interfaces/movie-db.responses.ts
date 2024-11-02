@@ -32,7 +32,7 @@ export interface MovieDBMovieResponse {
 export interface MovieDBFullMovieResponse {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: MovieDBMovieCollection;
+  belongs_to_collection: MovieDBMovieCollection | null;
   budget: number;
   genres: Genre[];
   homepage: string;

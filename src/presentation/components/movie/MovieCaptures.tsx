@@ -15,6 +15,7 @@ export default function MovieCaptures({captures = []}: Props) {
       style={{
         marginBottom: 20,
       }}
+      showsHorizontalScrollIndicator={false}
       renderItem={({item: capture, index}) => (
         <Image
           source={{uri: capture.url}}
