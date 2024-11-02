@@ -75,6 +75,7 @@ export interface ProductionCompany {
   origin_country: string;
 }
 
+// Cast
 export interface MovieDBCastResponse {
   id: number;
   cast: MovieDBCast[];
@@ -111,4 +112,22 @@ export enum Department {
   Sound = 'Sound',
   VisualEffects = 'Visual Effects',
   Writing = 'Writing',
+}
+
+// Images
+export interface MovieDBMovieImagesResponse {
+  backdrops: MovieDBImage[];
+  id: number;
+  logos: MovieDBImage[];
+  posters: MovieDBImage[];
+}
+
+export interface MovieDBImage {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: null | string;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
 }

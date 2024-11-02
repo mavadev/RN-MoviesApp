@@ -25,3 +25,8 @@ export interface Collection {
   poster: string;
   backdrop: string;
 }
+
+export interface MovieImage {
+  url: string;
+  asp_ratio: number;
+}

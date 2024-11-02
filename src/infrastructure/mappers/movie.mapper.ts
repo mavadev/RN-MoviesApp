@@ -1,7 +1,8 @@
-import type {FullMovie, Movie} from '../../core/entitites/movie.entity';
+import type {FullMovie, Movie, MovieImage} from '../../core/entitites/movie.entity';
 import type {
-  MovieDBFullMovieResponse,
   MovieDBMovieResponse,
+  MovieDBFullMovieResponse,
+  MovieDBImage,
 } from '../interfaces/movie-db.responses';
 
 export class MovieMapper {
@@ -46,6 +47,13 @@ export class MovieMapper {
       releaseDate: new Date(result.release_date),
       status: result.status,
       title: result.title,
+    };
+  }
+
+  static fromMovieDBImageToEntity(result: MovieDBImage): MovieImage {
+    return {
+      url: `${MovieMapper.PATH_IMAGE}${result.file_path}`,
+      asp_ratio: result.aspect_ratio,
     };
   }
 }

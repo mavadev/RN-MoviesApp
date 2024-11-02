@@ -9,28 +9,24 @@ interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
 export default function DetailsScreen({route}: Props) {
   const {movieId} = route.params;
-  const {movie, actors, isLoading} = useMovie(movieId);
+  const {logo, details, actors, isLoading} = useMovie(movieId);
 
   if (isLoading) return <Text>Cargando</Text>;
 
   return (
     <ScrollView>
       {/* Header */}
-      <MovieHeader backdrop={movie?.backdrop!} />
+      <MovieHeader backdrop={details?.backdrop!} logo={logo!} poster={details?.poster!} />
       {/* Detalles */}
       <MovieDetails
-        budget={movie?.budget!}
-        description={movie?.description!}
-        genres={movie?.genres!}
-        poster={movie?.poster!}
-        title={movie?.title!}
+        budget={details?.budget!}
+        description={details?.description!}
+        genres={details?.genres!}
       />
-      {/* Generos */}
-
       {/* Actores */}
       <MovieActors actors={actors!} />
       {/* Colección */}
-      <MovieCollection collection={movie?.collection!} />
+      <MovieCollection collection={details?.collection!} />
       {/* Similares */}
     </ScrollView>
   );
