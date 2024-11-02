@@ -1,6 +1,8 @@
 import {Text, View} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
+
 import {useMovie} from '../../hooks/useMovie';
+import {MovieHeader, MovieDetails} from '../../components/movie';
 import type {RootStackParams} from '../../navigation/MainNavigation';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
@@ -14,9 +16,17 @@ export default function DetailsScreen({route}: Props) {
   return (
     <View>
       {/* Header */}
+      <MovieHeader backdrop={movie?.backdrop!} />
       {/* Detalles */}
+      <MovieDetails
+        budget={movie?.budget!}
+        description={movie?.description!}
+        genres={movie?.genres!}
+        poster={movie?.poster!}
+        title={movie?.title!}
+      />
       {/* Actores */}
-      <Text>{movie?.title}</Text>
+      {/* Colección */}
     </View>
   );
 }
