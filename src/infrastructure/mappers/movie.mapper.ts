@@ -16,10 +16,24 @@ export class MovieMapper {
   }
 
   static fromFullMovieResultToFullMovieEntity(result: MovieDBFullMovieResponse): FullMovie {
+    const {
+      id: collectionID,
+      name: collectionName,
+      poster_path: collectionPoster,
+      backdrop_path: collectionBackdrop,
+    } = result.belongs_to_collection;
+
     return {
       backdrop: `${MovieMapper.PATH_IMAGE}${result.backdrop_path}`,
       budget: result.budget,
-      collection: result.belongs_to_collection,
+      collection: result.belongs_to_collection
+        ? {
+            id: collectionID,
+            name: collectionName,
+            poster: `${MovieMapper.PATH_IMAGE}${collectionPoster}`,
+            backdrop: `${MovieMapper.PATH_IMAGE}${collectionBackdrop}`,
+          }
+        : null,
       description: result.overview,
       duration: result.runtime,
       genres: result.genres.map(genre => genre.name),

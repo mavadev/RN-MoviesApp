@@ -1,8 +1,8 @@
-import {Text, View} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 
 import {useMovie} from '../../hooks/useMovie';
-import {MovieHeader, MovieDetails, MovieActors} from '../../components/movie';
+import {MovieHeader, MovieDetails, MovieActors, MovieCollection} from '../../components/movie';
 import type {RootStackParams} from '../../navigation/MainNavigation';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
@@ -14,7 +14,7 @@ export default function DetailsScreen({route}: Props) {
   if (isLoading) return <Text>Cargando</Text>;
 
   return (
-    <View>
+    <ScrollView>
       {/* Header */}
       <MovieHeader backdrop={movie?.backdrop!} />
       {/* Detalles */}
@@ -25,9 +25,13 @@ export default function DetailsScreen({route}: Props) {
         poster={movie?.poster!}
         title={movie?.title!}
       />
+      {/* Generos */}
+
       {/* Actores */}
       <MovieActors actors={actors!} />
       {/* Colección */}
-    </View>
+      <MovieCollection collection={movie?.collection!} />
+      {/* Similares */}
+    </ScrollView>
   );
 }
