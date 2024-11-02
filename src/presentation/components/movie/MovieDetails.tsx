@@ -39,7 +39,7 @@ export default function MovieDetails({genres, description, budget}: Props) {
               backgroundColor: 'black',
               paddingVertical: 6,
               paddingHorizontal: 12,
-              borderRadius: 10,
+              borderRadius: 7,
               color: 'white',
               marginRight: 10,
             }}>
