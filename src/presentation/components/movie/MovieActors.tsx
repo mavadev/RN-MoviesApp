@@ -14,6 +14,7 @@ export default function MovieActors({actors}: Props) {
         borderTopWidth: 2,
         borderBottomWidth: 2,
         borderBottomColor: 'black',
+        marginBottom: 20,
       }}>
       <View
         style={{

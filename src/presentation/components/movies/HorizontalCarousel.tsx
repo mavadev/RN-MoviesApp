@@ -39,7 +39,13 @@ export default function HorizontalCarousel({movies, title, loadMovies}: Props) {
   return (
     <View>
       {title && (
-        <Text style={{fontSize: 30, fontWeight: '300', marginLeft: 10, marginBottom: 15}}>
+        <Text
+          style={{
+            fontSize: 20,
+            marginLeft: 20,
+            marginBottom: 10,
+            fontWeight: 'bold',
+          }}>
           {title}
         </Text>
       )}
@@ -48,8 +54,11 @@ export default function HorizontalCarousel({movies, title, loadMovies}: Props) {
         horizontal
         data={movies}
         onScroll={onScroll}
+        style={{marginBottom: 20}}
         keyExtractor={(item, index) => `${item.id}-${index}`}
-        renderItem={({item}) => <MoviePoster movie={item} width={140} height={200} />}
+        renderItem={({item, index}) => (
+          <MoviePoster firstMovie={index == 0} movie={item} width={140} height={200} />
+        )}
       />
     </View>
   );

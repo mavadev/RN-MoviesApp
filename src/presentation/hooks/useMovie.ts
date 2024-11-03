@@ -3,7 +3,8 @@ import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
 import {getMovieByIdUseCase} from '../../core/use-cases/movie/get-by-id.use-case';
 import {getMovieCastUseCase} from '../../core/use-cases/movie/get-cast.use-case';
 import {getImagesUseCase} from '../../core/use-cases/movie/get-images.use-case';
-import type {FullMovie, MovieImage} from '../../core/entitites/movie.entity';
+import {getSimilarMoviesUseCase} from '../../core/use-cases/movie/get-movies-similar.use-case';
+import type {FullMovie, Movie, MovieImage} from '../../core/entitites/movie.entity';
 import type {Cast} from '../../core/entitites/cast.entity';
 
 interface MovieState {
@@ -11,6 +12,7 @@ interface MovieState {
   captures: MovieImage[];
   details: FullMovie;
   actors: Cast[];
+  similar: Movie[];
 }
 
 export const useMovie = (movieId: number) => {
@@ -27,11 +29,13 @@ export const useMovie = (movieId: number) => {
     const fullMoviePromise = getMovieByIdUseCase(movieDBFetcher, movieId.toString());
     const castPromise = getMovieCastUseCase(movieDBFetcher, movieId);
     const imagesPromise = getImagesUseCase(movieDBFetcher, movieId);
+    const moviesSimilarPromise = getSimilarMoviesUseCase(movieDBFetcher, movieId);
 
-    const [fullMovie, actors, images] = await Promise.all([
+    const [fullMovie, actors, images, moviesSimilar] = await Promise.all([
       fullMoviePromise,
       castPromise,
       imagesPromise,
+      moviesSimilarPromise,
     ]);
 
     setMovie({
@@ -39,6 +43,7 @@ export const useMovie = (movieId: number) => {
       captures: images.captures,
       details: fullMovie,
       actors,
+      similar: moviesSimilar,
     });
     setIsLoading(false);
   };

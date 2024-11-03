@@ -1,4 +1,4 @@
-import {Image, ScrollView, Text} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 
 import {useMovie} from '../../hooks/useMovie';
@@ -10,13 +10,13 @@ import {
   MovieCaptures,
 } from '../../components/movie';
 import type {RootStackParams} from '../../navigation/MainNavigation';
-import {FlatList} from 'react-native-gesture-handler';
+import {HorizontalCarousel} from '../../components/movies';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
 export default function DetailsScreen({route}: Props) {
   const {movieId} = route.params;
-  const {logo, details, captures, actors, isLoading} = useMovie(movieId);
+  const {logo, details, captures, actors, similar, isLoading} = useMovie(movieId);
 
   if (isLoading) return <Text>Cargando</Text>;
 
@@ -37,6 +37,7 @@ export default function DetailsScreen({route}: Props) {
       {/* Colección */}
       <MovieCollection collection={details?.collection!} />
       {/* Similares */}
+      <HorizontalCarousel movies={similar!} title="Similares" />
     </ScrollView>
   );
 }

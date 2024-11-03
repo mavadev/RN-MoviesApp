@@ -1,37 +1,47 @@
-import {Image, Pressable, StyleSheet} from 'react-native';
+import {Image, Pressable, Text, StyleSheet} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../../navigation/MainNavigation';
 import type {Movie} from '../../../core/entitites/movie.entity';
+import {View} from 'react-native';
 
 interface Props {
+  firstMovie?: boolean;
   movie: Movie;
   width?: number;
   height?: number;
 }
 
-export default function MoviePoster({movie, width = 280, height = 420}: Props) {
+export default function MoviePoster({firstMovie, movie, width = 280, height = 420}: Props) {
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
   return (
-    <Pressable
-      style={({pressed}) => ({
-        ...styles.container,
-        width,
-        height,
-        opacity: pressed ? 0.85 : 1,
-      })}
-      onPress={() => navigation.navigate('Details', {movieId: movie.id})}>
-      <Image style={{flex: 1}} source={{uri: movie.poster}} />
-    </Pressable>
+    <View style={{...styles.container, marginLeft: firstMovie ? 20 : 0}}>
+      <Pressable
+        style={({pressed}) => ({
+          ...styles.containerPoster,
+          width,
+          height,
+          opacity: pressed ? 0.85 : 1,
+        })}
+        onPress={() => navigation.navigate('Details', {movieId: movie.id})}>
+        <Image style={styles.poster} source={{uri: movie.poster}} />
+      </Pressable>
+      <Text style={{...styles.title, width}} numberOfLines={1}>
+        {movie.title}
+      </Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderRadius: 18,
+    marginRight: 5,
+  },
+  containerPoster: {
+    borderRadius: 5,
+    marginBottom: 10,
     overflow: 'hidden',
-    marginHorizontal: 10,
 
     shadowRadius: 7,
     shadowColor: 'black',
@@ -41,10 +51,13 @@ const styles = StyleSheet.create({
       height: 10,
     },
     elevation: 6,
-
-    marginBottom: 15,
   },
-  image: {
+  poster: {
     flex: 1,
+  },
+  title: {
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: 'medium',
   },
 });
