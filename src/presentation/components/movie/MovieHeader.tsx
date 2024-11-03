@@ -1,4 +1,5 @@
 import {Image, Pressable, StyleSheet, View} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -11,6 +12,7 @@ interface Props {
 
 export default function MovieHeader({backdrop, logo}: Props) {
   const navigation = useNavigation();
+  const {top} = useSafeAreaInsets();
 
   return (
     <>
@@ -22,7 +24,11 @@ export default function MovieHeader({backdrop, logo}: Props) {
           style={styles.containerAbsolute}>
           <Pressable
             onPress={() => navigation.goBack()}
-            style={({pressed}) => ({...styles.containerButton, opacity: pressed ? 0.8 : 1})}>
+            style={({pressed}) => ({
+              ...styles.containerButton,
+              opacity: pressed ? 0.8 : 1,
+              marginTop: top,
+            })}>
             <Ionicon name="arrow-back-outline" style={styles.button} />
           </Pressable>
         </LinearGradient>

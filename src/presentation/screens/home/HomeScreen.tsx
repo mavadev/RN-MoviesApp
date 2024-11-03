@@ -1,42 +1,34 @@
-import {Text, View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {useMovies} from '../../hooks/useMovies';
-import {MovieList} from '../../../core/constants/movieList.enum';
 import {HorizontalCarousel, PosterCarousel} from '../../components/movies';
+import {useContent, ContentPaths} from '../../hooks/useContent';
+import Loader from '../../components/ui/Loader';
 
 export default function HomeScreen() {
   const {top} = useSafeAreaInsets();
-  const {isLoading, nowPlaying, popular, topRated, upComing, updateMovies} = useMovies();
+  const {isLoading, trending, moviesPopular, seriesPopular, updateContent} = useContent();
 
-  if (isLoading) return <Text>Cargando</Text>;
+  if (isLoading) return <Loader />;
 
   return (
     <ScrollView>
       <View style={{marginTop: top, paddingVertical: 20, rowGap: 15}}>
-        {/* Principal */}
-        <PosterCarousel movies={nowPlaying} />
+        {/* Trending */}
+        <PosterCarousel movies={trending!} />
 
-        {/* Populares */}
+        {/* Películas Populares */}
         <HorizontalCarousel
-          movies={popular}
-          title="Populares"
-          loadMovies={page => updateMovies(MovieList.Popular, page)}
+          movies={moviesPopular}
+          title="Películas Populares"
+          loadMovies={page => updateContent(ContentPaths.MoviesPopular, page)}
         />
 
-        {/* Top Rated */}
+        {/* Series Populares */}
         <HorizontalCarousel
-          movies={topRated}
-          title="Mejor Valorados"
-          loadMovies={page => updateMovies(MovieList.TopRated, page)}
-        />
-
-        {/* Up Coming */}
-        <HorizontalCarousel
-          movies={upComing}
-          title="Próximos Estrenos"
-          loadMovies={page => updateMovies(MovieList.Upcoming, page)}
+          movies={seriesPopular}
+          title="Series Populares"
+          loadMovies={page => updateContent(ContentPaths.TvSeriesPopular, page)}
         />
       </View>
     </ScrollView>

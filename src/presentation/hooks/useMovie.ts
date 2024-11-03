@@ -1,11 +1,14 @@
 import {useEffect, useState} from 'react';
+import {
+  getMovieByIdUseCase,
+  getMovieCastUseCase,
+  getImagesUseCase,
+  getSimilarMoviesUseCase,
+} from '../../core/use-cases/movie';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import {getMovieByIdUseCase} from '../../core/use-cases/movie/get-by-id.use-case';
-import {getMovieCastUseCase} from '../../core/use-cases/movie/get-cast.use-case';
-import {getImagesUseCase} from '../../core/use-cases/movie/get-images.use-case';
-import {getSimilarMoviesUseCase} from '../../core/use-cases/movie/get-movies-similar.use-case';
+
 import type {FullMovie, Movie, MovieImage} from '../../core/entitites/movie.entity';
-import type {Cast} from '../../core/entitites/cast.entity';
+import type {Cast} from '../../core/entitites/media.entity';
 
 interface MovieState {
   logo: MovieImage | null;

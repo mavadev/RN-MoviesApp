@@ -1,32 +1,32 @@
 export interface Movie {
+  backdrop: string;
   id: number;
-  title: string;
   poster: string;
+  title: string;
 }
 
 export interface FullMovie extends Movie {
-  description: string;
-  releaseDate: Date;
-  rating: number;
-  backdrop: string;
   budget: number;
   collection: Collection | null;
+  description: string;
   duration: number;
   genres: string[];
   homepage: string;
   isRestricted: boolean;
   productionCompanies: string[];
+  rating: number;
+  releaseDate: Date;
   status: string;
 }
 
 export interface Collection {
+  backdrop: string;
   id: number;
   name: string;
   poster: string;
-  backdrop: string;
 }
 
 export interface MovieImage {
-  url: string;
   asp_ratio: number;
+  url: string;
 }

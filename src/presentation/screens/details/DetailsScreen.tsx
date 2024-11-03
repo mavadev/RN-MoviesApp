@@ -1,6 +1,6 @@
-import {ScrollView, Text} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
-
+import type {RootStackParams} from '../../navigation/MainNavigation';
 import {useMovie} from '../../hooks/useMovie';
 import {
   MovieHeader,
@@ -9,8 +9,8 @@ import {
   MovieCollection,
   MovieCaptures,
 } from '../../components/movie';
-import type {RootStackParams} from '../../navigation/MainNavigation';
 import {HorizontalCarousel} from '../../components/movies';
+import Loader from '../../components/ui/Loader';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
@@ -18,10 +18,11 @@ export default function DetailsScreen({route}: Props) {
   const {movieId} = route.params;
   const {logo, details, captures, actors, similar, isLoading} = useMovie(movieId);
 
-  if (isLoading) return <Text>Cargando</Text>;
+  if (isLoading) return <Loader />;
 
   return (
     <ScrollView>
+      <StatusBar backgroundColor="transparent" />
       {/* Header */}
       <MovieHeader backdrop={details?.backdrop!} logo={logo!} />
       {/* Detalles */}
