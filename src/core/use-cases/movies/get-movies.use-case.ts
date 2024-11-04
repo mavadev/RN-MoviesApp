@@ -1,7 +1,7 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
 import {MovieMapper} from '../../../infrastructure/mappers/movie.mapper';
 import type {MovieDBMoviesResponse} from '../../../infrastructure/interfaces/movie-db.responses';
-import type {Movie} from '../../entitites/movie.entity';
+import type {Media} from '../../entitites/media.entity';
 
 interface Options {
   page?: number;
@@ -12,7 +12,7 @@ export const getMoviesUseCase = async (
   fetcher: HttpAdapter,
   pathURL: string,
   options?: Options,
-): Promise<Movie[]> => {
+): Promise<Media[]> => {
   try {
     const nowPlaying = await fetcher.get<MovieDBMoviesResponse>(pathURL, {
       params: {

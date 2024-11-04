@@ -1,11 +1,10 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import CarouselHorizontalItem from './CarouselHorizontal-Item';
-import type {Movie} from '../../../../core/entitites/movie.entity';
-import type {TvSerie} from '../../../../core/entitites/tv_serie.entity';
+import type {Media} from '../../../../core/entitites/media.entity';
 
 interface Props {
-  mediaList: (Movie | TvSerie)[];
+  mediaList: Media[];
 }
 
 export default function CarouselHorizontal({mediaList}: Props) {

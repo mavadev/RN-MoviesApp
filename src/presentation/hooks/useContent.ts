@@ -1,10 +1,9 @@
 import {useEffect, useState} from 'react';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import type {Movie} from '../../core/entitites/movie.entity';
-import type {TvSerie} from '../../core/entitites/tv_serie.entity';
 import {getTrendingAllUseCase} from '../../core/use-cases/trending/get-all.use-case copy';
 import {getMoviesUseCase} from '../../core/use-cases';
-import {getTvSeriesUseCase} from '../../core/use-cases/tv-series/get-series.use-case';
+import {getTvSeriesUseCase} from '../../core/use-cases/tv_series/get-series.use-case';
+import type {Media} from '../../core/entitites/media.entity';
 
 export enum ContentPaths {
   Trending = '/trending/all/week',
@@ -15,9 +14,9 @@ export enum ContentPaths {
 export const useContent = () => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const [trending, setTrending] = useState<(Movie | TvSerie)[]>([]);
-  const [moviesPopular, setMoviesPopular] = useState<Movie[]>([]);
-  const [seriesPopular, setSeriesPopular] = useState<TvSerie[]>([]);
+  const [trending, setTrending] = useState<Media[]>([]);
+  const [moviesPopular, setMoviesPopular] = useState<Media[]>([]);
+  const [seriesPopular, setSeriesPopular] = useState<Media[]>([]);
 
   useEffect(() => {
     loadMovies();

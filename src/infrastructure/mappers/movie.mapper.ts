@@ -1,17 +1,19 @@
-import type {FullMovie, Movie, MovieImage} from '../../core/entitites/movie.entity';
 import type {
   MovieDBMovieResponse,
   MovieDBMovieDetailsResponse,
 } from '../interfaces/movie-db.responses';
 import type {MovieDBImage} from '../interfaces/media-db.responses';
+import type {Media} from '../../core/entitites/media.entity';
+import type {FullMovie, MovieImage} from '../../core/entitites/movie.entity';
 
 export class MovieMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-  static fromMovieResultToMovieEntity(result: MovieDBMovieResponse): Movie {
+  static fromMovieResultToMovieEntity(result: MovieDBMovieResponse): Media {
     return {
       backdrop: `${MovieMapper.PATH_IMAGE}${result.backdrop_path}`,
       id: result.id,
+      mediaType: 'movie',
       poster: `${MovieMapper.PATH_IMAGE}${result.poster_path}`,
       title: result.title,
     };

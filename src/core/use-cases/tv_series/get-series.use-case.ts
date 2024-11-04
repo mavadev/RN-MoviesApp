@@ -1,7 +1,7 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
 import {TvSerieMapper} from '../../../infrastructure/mappers/tv_serie.mapper';
 import type {MovieDBTvSeriesResponse} from '../../../infrastructure/interfaces/tv_serie-db.responses';
-import type {TvSerie} from '../../entitites/tv_serie.entity';
+import type {Media} from '../../entitites/media.entity';
 
 interface Options {
   page?: number;
@@ -12,7 +12,7 @@ export const getTvSeriesUseCase = async (
   fetcher: HttpAdapter,
   pathURL: string,
   options?: Options,
-): Promise<TvSerie[]> => {
+): Promise<Media[]> => {
   try {
     const nowPlaying = await fetcher.get<MovieDBTvSeriesResponse>(pathURL, {
       params: {

@@ -1,22 +1,19 @@
-export interface Movie {
+export interface FullMovie {
   backdrop: string;
-  id: number;
-  poster: string;
-  title: string;
-}
-
-export interface FullMovie extends Movie {
   budget: number;
   collection: Collection | null;
   description: string;
   duration: number;
   genres: string[];
   homepage: string;
+  id: number;
   isRestricted: boolean;
+  poster: string;
   productionCompanies: string[];
   rating: number;
   releaseDate: Date;
   status: string;
+  title: string;
 }
 
 export interface Collection {

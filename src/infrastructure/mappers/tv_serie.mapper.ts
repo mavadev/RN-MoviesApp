@@ -1,18 +1,20 @@
-import type {TvSerie, TvSerieDetails} from '../../core/entitites/tv_serie.entity';
 import type {
   MovieDBTvSerieResponse,
   MovieDBTvSerieDetailsResponse,
 } from '../interfaces/tv_serie-db.responses';
+import type {Media} from '../../core/entitites/media.entity';
+import type {TvSerieDetails} from '../../core/entitites/tv_serie.entity';
 
 export class TvSerieMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-  static fromTvSerieResultToEntity(result: MovieDBTvSerieResponse): TvSerie {
+  static fromTvSerieResultToEntity(result: MovieDBTvSerieResponse): Media {
     return {
-      id: result.id,
-      title: result.name,
-      poster: `${TvSerieMapper.PATH_IMAGE}${result.poster_path}`,
       backdrop: `${TvSerieMapper.PATH_IMAGE}${result.backdrop_path}`,
+      id: result.id,
+      mediaType: 'tv',
+      poster: `${TvSerieMapper.PATH_IMAGE}${result.poster_path}`,
+      title: result.name,
     };
   }
 

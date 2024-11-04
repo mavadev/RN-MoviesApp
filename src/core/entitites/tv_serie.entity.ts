@@ -1,19 +1,16 @@
-export interface TvSerie {
-  id: number;
-  title: string;
-  poster: string;
+export interface TvSerieDetails {
   backdrop: string;
-}
-
-export interface TvSerieDetails extends TvSerie {
+  companies: Company[];
   description: string;
   firstDate: Date;
   genres: string[];
   homepage: string;
-  companies: Company[];
+  id: number;
+  poster: string;
   rating: number;
   seasons: Season[];
   status: string;
+  title: string;
   type: string;
 }
 export interface Company {

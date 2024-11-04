@@ -7,15 +7,15 @@ import {
 } from '../../core/use-cases/movie';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
 
-import type {FullMovie, Movie, MovieImage} from '../../core/entitites/movie.entity';
-import type {Cast} from '../../core/entitites/media.entity';
+import type {FullMovie, MovieImage} from '../../core/entitites/movie.entity';
+import type {Media, Cast} from '../../core/entitites/media.entity';
 
 interface MovieState {
   logo: MovieImage | null;
   captures: MovieImage[];
   details: FullMovie;
   actors: Cast[];
-  similar: Movie[];
+  similar: Media[];
 }
 
 export const useMovie = (movieId: number) => {

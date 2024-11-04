@@ -1,15 +1,24 @@
-import {Image, StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import type {Movie} from '../../../../core/entitites/movie.entity';
-import type {TvSerie} from '../../../../core/entitites/tv_serie.entity';
+import {Image, Pressable, StyleSheet} from 'react-native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import type {RootStackParams} from '../../../navigation/MainNavigation';
+import type {Media} from '../../../../core/entitites/media.entity';
 
 interface Props {
-  media: Movie | TvSerie;
+  media: Media;
 }
 
 export default function CarouselHorizontalItem({media}: Props) {
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
   return (
-    <View style={styles.carouselItem}>
+    <Pressable
+      style={styles.carouselItem}
+      onPress={() =>
+        navigation.navigate(media.mediaType == 'movie' ? 'MovieDetails' : 'TvSerieDetails', {
+          mediaId: media.id,
+        })
+      }>
       <Image source={{uri: media.backdrop}} style={styles.backdrop} />
       <LinearGradient
         start={{x: 0.5, y: 0.5}}
@@ -22,7 +31,7 @@ export default function CarouselHorizontalItem({media}: Props) {
         }}>
         <Image source={{uri: media.poster}} style={{height: '100%', aspectRatio: 11 / 17}} />
       </LinearGradient>
-    </View>
+    </Pressable>
   );
 }
 
