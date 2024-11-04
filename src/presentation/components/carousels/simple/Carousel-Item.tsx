@@ -1,17 +1,15 @@
-import {Image, Pressable, Text, StyleSheet} from 'react-native';
+import {View, Image, Pressable, Text, StyleSheet} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {RootStackParams} from '../../navigation/MainNavigation';
-import type {Movie} from '../../../core/entitites/movie.entity';
-import {View} from 'react-native';
+import type {RootStackParams} from '../../../navigation/MainNavigation';
+import type {Movie} from '../../../../core/entitites/movie.entity';
+import type {TvSerie} from '../../../../core/entitites/tv_serie.entity';
 
 interface Props {
   firstMovie?: boolean;
-  movie: Movie;
-  width?: number;
-  height?: number;
+  media: Movie | TvSerie;
 }
 
-export default function MoviePoster({firstMovie, movie, width = 280, height = 420}: Props) {
+export default function CarouselItem({firstMovie, media}: Props) {
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
   return (
@@ -19,15 +17,13 @@ export default function MoviePoster({firstMovie, movie, width = 280, height = 42
       <Pressable
         style={({pressed}) => ({
           ...styles.containerPoster,
-          width,
-          height,
           opacity: pressed ? 0.85 : 1,
         })}
-        onPress={() => navigation.navigate('Details', {movieId: movie.id})}>
-        <Image style={styles.poster} source={{uri: movie.poster}} />
+        onPress={() => navigation.navigate('Details', {movieId: media.id})}>
+        <Image style={styles.poster} source={{uri: media.poster}} />
       </Pressable>
-      <Text style={{...styles.title, width}} numberOfLines={1}>
-        {movie.title}
+      <Text style={{...styles.title}} numberOfLines={1}>
+        {media.title}
       </Text>
     </View>
   );
@@ -39,6 +35,8 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   containerPoster: {
+    width: 140,
+    height: 200,
     borderRadius: 5,
     marginBottom: 10,
     overflow: 'hidden',

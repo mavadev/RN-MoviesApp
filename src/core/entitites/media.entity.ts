@@ -3,6 +3,7 @@ export interface Media {
   id: number;
   poster: string;
   title: string;
+  mediaType: 'movie' | 'tv';
 }
 export interface Cast {
   id: number;

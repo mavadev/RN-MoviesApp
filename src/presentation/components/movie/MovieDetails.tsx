@@ -1,5 +1,4 @@
 import {Image, ScrollView, Text, View} from 'react-native';
-import {Formatter} from '../../../config/helpers/formatter';
 
 interface Props {
   genres: string[];

@@ -1,9 +1,9 @@
 import {ScrollView, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {HorizontalCarousel, PosterCarousel} from '../../components/movies';
 import {useContent, ContentPaths} from '../../hooks/useContent';
-import Loader from '../../components/ui/Loader';
+import {Loader} from '../../components/ui';
+import {Carousel, CarouselHorizontal} from '../../components/carousels';
 
 export default function HomeScreen() {
   const {top} = useSafeAreaInsets();
@@ -13,20 +13,20 @@ export default function HomeScreen() {
 
   return (
     <ScrollView>
-      <View style={{marginTop: top, paddingVertical: 20, rowGap: 15}}>
+      <View style={{marginTop: top, rowGap: 15}}>
         {/* Trending */}
-        <PosterCarousel movies={trending!} />
+        <CarouselHorizontal mediaList={trending} />
 
         {/* Películas Populares */}
-        <HorizontalCarousel
-          movies={moviesPopular}
+        <Carousel
+          mediaList={moviesPopular}
           title="Películas Populares"
           loadMovies={page => updateContent(ContentPaths.MoviesPopular, page)}
         />
 
         {/* Series Populares */}
-        <HorizontalCarousel
-          movies={seriesPopular}
+        <Carousel
+          mediaList={seriesPopular}
           title="Series Populares"
           loadMovies={page => updateContent(ContentPaths.TvSeriesPopular, page)}
         />

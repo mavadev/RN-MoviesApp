@@ -2,6 +2,8 @@ import {ScrollView, StatusBar} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import type {RootStackParams} from '../../navigation/MainNavigation';
 import {useMovie} from '../../hooks/useMovie';
+import {Loader} from '../../components/ui';
+import {Carousel} from '../../components/carousels';
 import {
   MovieHeader,
   MovieDetails,
@@ -9,8 +11,6 @@ import {
   MovieCollection,
   MovieCaptures,
 } from '../../components/movie';
-import {HorizontalCarousel} from '../../components/movies';
-import Loader from '../../components/ui/Loader';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
@@ -38,7 +38,7 @@ export default function DetailsScreen({route}: Props) {
       {/* Colección */}
       <MovieCollection collection={details?.collection!} />
       {/* Similares */}
-      <HorizontalCarousel movies={similar!} title="Similares" />
+      <Carousel mediaList={similar!} title="Similares" />
     </ScrollView>
   );
 }

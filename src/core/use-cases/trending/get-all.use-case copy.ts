@@ -1,7 +1,7 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
 import {MediaMapper} from '../../../infrastructure/mappers/media.mapper';
 import type {MovieDBMediaListResponse} from '../../../infrastructure/interfaces/media-db.responses';
-import type {Movie} from '../../entitites/movie.entity';
+import type {Media} from '../../entitites/media.entity';
 
 interface Options {
   page?: number;
@@ -10,7 +10,7 @@ interface Options {
 export const getTrendingAllUseCase = async (
   fetcher: HttpAdapter,
   options?: Options,
-): Promise<Movie[]> => {
+): Promise<Media[]> => {
   try {
     const trendingList = await fetcher.get<MovieDBMediaListResponse>('/trending/all/week', {
       params: {

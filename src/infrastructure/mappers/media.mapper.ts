@@ -13,6 +13,7 @@ export class MediaMapper {
           : result.name || 'Título no disponible',
       poster: `${MediaMapper.PATH_IMAGE}${result.poster_path}`,
       backdrop: `${MediaMapper.PATH_IMAGE}${result.backdrop_path}`,
+      mediaType: result.media_type,
     };
   }
 

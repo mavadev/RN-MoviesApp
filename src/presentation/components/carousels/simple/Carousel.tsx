@@ -1,17 +1,18 @@
 import {useEffect, useRef, useState} from 'react';
 import {FlatList} from 'react-native-gesture-handler';
-import {NativeScrollEvent, NativeSyntheticEvent, Text, View} from 'react-native';
+import {NativeScrollEvent, NativeSyntheticEvent, StyleSheet, Text, View} from 'react-native';
 
-import MoviePoster from './MoviePoster';
-import type {Movie} from '../../../core/entitites/movie.entity';
+import CarouselItem from './Carousel-Item';
+import type {Movie} from '../../../../core/entitites/movie.entity';
+import type {TvSerie} from '../../../../core/entitites/tv_serie.entity';
 
 interface Props {
-  movies: Movie[];
   title?: string;
+  mediaList: (Movie | TvSerie)[];
   loadMovies?: (page: number) => void;
 }
 
-export default function HorizontalCarousel({movies, title, loadMovies}: Props) {
+export default function Carousel({mediaList, title, loadMovies}: Props) {
   const isGettingMovies = useRef(false);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -21,7 +22,7 @@ export default function HorizontalCarousel({movies, title, loadMovies}: Props) {
 
   useEffect(() => {
     setTimeout(() => (isGettingMovies.current = false), 200);
-  }, [movies]);
+  }, [mediaList]);
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (isGettingMovies.current) return;
@@ -38,28 +39,28 @@ export default function HorizontalCarousel({movies, title, loadMovies}: Props) {
 
   return (
     <View>
-      {title && (
-        <Text
-          style={{
-            fontSize: 20,
-            marginLeft: 20,
-            marginBottom: 10,
-            fontWeight: 'bold',
-          }}>
-          {title}
-        </Text>
-      )}
+      {title && <Text style={styles.carouselTitle}>{title}</Text>}
 
       <FlatList
         horizontal
-        data={movies}
+        data={mediaList}
         onScroll={onScroll}
-        style={{marginBottom: 20}}
+        style={styles.carousel}
         keyExtractor={(item, index) => `${item.id}-${index}`}
-        renderItem={({item, index}) => (
-          <MoviePoster firstMovie={index == 0} movie={item} width={140} height={200} />
-        )}
+        renderItem={({item, index}) => <CarouselItem media={item} firstMovie={index == 0} />}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  carouselTitle: {
+    fontSize: 20,
+    marginLeft: 20,
+    marginBottom: 10,
+    fontWeight: 'bold',
+  },
+  carousel: {
+    marginBottom: 20,
+  },
+});
