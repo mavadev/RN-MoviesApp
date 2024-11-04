@@ -4,16 +4,18 @@ import type {MovieDBMediaCast, MovieDBMediaResponse} from '../interfaces/media-d
 export class MediaMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-  static fromMediaResultToEntity(result: MovieDBMediaResponse): Media {
+  static fromMediaResultToEntity(result: MovieDBMediaResponse, type?: Media['mediaType']): Media {
+    const mediaType = type || result.media_type;
+
     return {
       id: result.id,
+      mediaType,
       title:
-        result.media_type === 'movie'
+        mediaType === 'movie'
           ? result.title || 'Título no disponible'
           : result.name || 'Título no disponible',
       poster: `${MediaMapper.PATH_IMAGE}${result.poster_path}`,
       backdrop: `${MediaMapper.PATH_IMAGE}${result.backdrop_path}`,
-      mediaType: result.media_type,
     };
   }
 

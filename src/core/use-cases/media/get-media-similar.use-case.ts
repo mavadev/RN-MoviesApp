@@ -10,7 +10,7 @@ export const getSimilarMediaUseCase = async (
 ): Promise<Media[]> => {
   try {
     const {results} = await fetcher.get<MovieDBMoviesResponse>(`/${mediaType}/${mediaId}/similar`);
-    return results.map(MediaMapper.fromMediaResultToEntity);
+    return results.map(result => MediaMapper.fromMediaResultToEntity(result, mediaType));
   } catch (error) {
     console.log('ERROR MEDIA SIMILAR');
     throw new Error(`Cannot get similiar medias of ${mediaType} ${mediaId}: ${error}`);

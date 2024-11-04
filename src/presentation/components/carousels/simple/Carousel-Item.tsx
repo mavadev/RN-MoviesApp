@@ -20,7 +20,7 @@ export default function CarouselItem({firstMovie, media}: Props) {
           opacity: pressed ? 0.85 : 1,
         })}
         onPress={() =>
-          navigation.navigate(media.mediaType == 'movie' ? 'MovieDetails' : 'TvSerieDetails', {
+          navigation.navigate(media.mediaType == 'movie' ? 'MovieScreen' : 'SerieScreen', {
             mediaId: media.id,
           })
         }>
@@ -52,14 +52,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     overflow: 'hidden',
 
-    shadowRadius: 7,
+    shadowRadius: 5,
     shadowColor: 'black',
-    shadowOpacity: 0.24,
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    elevation: 6,
+    shadowOpacity: 0.1,
+    elevation: 4,
   },
   poster: {
     flex: 1,

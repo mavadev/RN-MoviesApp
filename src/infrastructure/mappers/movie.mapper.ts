@@ -38,11 +38,13 @@ export class MovieMapper {
       id: result.id,
       isRestricted: result.adult,
       poster: `${MovieMapper.PATH_IMAGE}${result.poster_path}`,
-      companies: result.production_companies.map(company => ({
-        id: company.id,
-        name: company.name,
-        logo: company.logo_path ? `${MovieMapper.PATH_IMAGE}${company.logo_path}` : null,
-      })),
+      companies: result.production_companies
+        .filter(company => company.logo_path)
+        .map(company => ({
+          id: company.id,
+          name: company.name,
+          logo: company.logo_path ? `${MovieMapper.PATH_IMAGE}${company.logo_path}` : null,
+        })),
       rating: result.vote_average,
       releaseDate: new Date(result.release_date),
       status: result.status,

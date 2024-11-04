@@ -59,14 +59,12 @@ export default function Carousel({mediaList, title, loadMovies}: Props) {
 
 const styles = StyleSheet.create({
   carouselTitle: {
-    fontSize: 20,
-    letterSpacing: 2,
+    fontSize: 22,
     marginLeft: 20,
-    marginBottom: 20,
+    marginBottom: 15,
     fontWeight: 'bold',
-    textTransform: 'uppercase',
   },
   carousel: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });

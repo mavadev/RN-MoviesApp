@@ -17,6 +17,8 @@ const CompanyImage = ({first, company}: {first: boolean; company: Company}) => (
 );
 
 export default function MediaCompanies({companies}: Props) {
+  if (!companies.length) return <></>;
+
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>

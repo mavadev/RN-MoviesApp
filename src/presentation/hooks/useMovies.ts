@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {getMoviesUseCase} from '../../core/use-cases';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import type {Movie} from '../../core/entitites/movie.entity';
+import type {Media} from '../../core/entitites/media.entity';
 
 export enum MoviePaths {
   NowPlaying = '/movie/now_playing',
@@ -13,11 +13,11 @@ export enum MoviePaths {
 export const useMovies = () => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const [trending, setTrending] = useState<Movie[]>();
-  const [nowPlaying, setNowPlaying] = useState<Movie[]>([]);
-  const [popular, setPopular] = useState<Movie[]>([]);
-  const [topRated, setTopRated] = useState<Movie[]>([]);
-  const [upComing, setUpComing] = useState<Movie[]>([]);
+  const [trending, setTrending] = useState<Media[]>();
+  const [nowPlaying, setNowPlaying] = useState<Media[]>([]);
+  const [popular, setPopular] = useState<Media[]>([]);
+  const [topRated, setTopRated] = useState<Media[]>([]);
+  const [upComing, setUpComing] = useState<Media[]>([]);
 
   useEffect(() => {
     loadMovies();

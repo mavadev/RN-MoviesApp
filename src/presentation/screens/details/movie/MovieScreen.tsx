@@ -1,4 +1,4 @@
-import {ScrollView, StatusBar} from 'react-native';
+import {ScrollView, StatusBar, Text} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import type {RootStackParams} from '../../../navigation/MainNavigation';
 
@@ -14,7 +14,7 @@ import {
   MediaCompanies,
 } from '../../../components/details/';
 
-interface Props extends StackScreenProps<RootStackParams, 'MovieDetails'> {}
+interface Props extends StackScreenProps<RootStackParams, 'MovieScreen'> {}
 
 export default function MovieScreen({route}: Props) {
   const {mediaId} = route.params;

@@ -16,7 +16,7 @@ export interface MovieDBMediaResponse {
   genre_ids: number[];
   id: number;
   media_type: 'movie' | 'tv';
-  name?: string;
+  name: string;
   original_language: string;
   overview: string;
   popularity: number;

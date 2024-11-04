@@ -9,6 +9,8 @@ interface Props {
 }
 
 export default function MediaPeople({title, people, position = 'left'}: Props) {
+  if (!people.length) return <></>;
+
   return (
     <View
       style={{

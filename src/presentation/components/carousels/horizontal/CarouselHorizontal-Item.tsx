@@ -15,7 +15,7 @@ export default function CarouselHorizontalItem({media}: Props) {
     <Pressable
       style={styles.carouselItem}
       onPress={() =>
-        navigation.navigate(media.mediaType == 'movie' ? 'MovieDetails' : 'TvSerieDetails', {
+        navigation.navigate(media.mediaType == 'movie' ? 'MovieScreen' : 'SerieScreen', {
           mediaId: media.id,
         })
       }>

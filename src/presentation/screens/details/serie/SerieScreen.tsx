@@ -1,16 +1,21 @@
-import {FlatList, Image, ScrollView, StatusBar, Text, View} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import type {RootStackParams} from '../../../navigation/MainNavigation';
+
 import {useTvSerie} from '../../../hooks/useTvSerie';
 import {Loader} from '../../../components/ui';
 import {Carousel} from '../../../components/carousels';
-import {MediaHeader, MediaDetails, MediaCaptures, MediaPeople} from '../../../components/details';
-import MediaCompanies from '../../../components/details/media/MediaCompanies';
-// import {} from '../../../components/tv_serie';
+import {
+  MediaHeader,
+  MediaDetails,
+  MediaCaptures,
+  MediaPeople,
+  MediaCompanies,
+} from '../../../components/details';
 
-interface Props extends StackScreenProps<RootStackParams, 'TvSerieDetails'> {}
+interface Props extends StackScreenProps<RootStackParams, 'SerieScreen'> {}
 
-export default function TvSerieScreen({route}: Props) {
+export default function SerieScreen({route}: Props) {
   const {mediaId} = route.params;
   const {isLoading, logo, details, captures, cast, similar} = useTvSerie(mediaId);
 

@@ -1,5 +1,5 @@
-import {useCallback, useState} from 'react';
-import {Pressable, ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
+import {HiddenText} from '../../details';
 
 interface Props {
   genres: string[];
@@ -7,10 +7,6 @@ interface Props {
 }
 
 export default function MovieDetails({genres, description}: Props) {
-  const [viewDescription, setViewDescription] = useState(false);
-
-  const toggleDescription = useCallback(() => setViewDescription(prev => !prev), []);
-
   return (
     <>
       {/* Descripción */}
@@ -24,13 +20,7 @@ export default function MovieDetails({genres, description}: Props) {
             }}>
             Descripción
           </Text>
-          <Pressable onPress={toggleDescription}>
-            <Text
-              style={{fontSize: 16, lineHeight: 26}}
-              numberOfLines={viewDescription ? undefined : 5}>
-              {description}
-            </Text>
-          </Pressable>
+          <HiddenText text={description} />
         </View>
       )}
       {/* Géneros de la Película */}

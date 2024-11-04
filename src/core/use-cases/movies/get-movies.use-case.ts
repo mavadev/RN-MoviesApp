@@ -14,12 +14,12 @@ export const getMoviesUseCase = async (
   options?: Options,
 ): Promise<Media[]> => {
   try {
-    const nowPlaying = await fetcher.get<MovieDBMoviesResponse>(pathURL, {
+    const movies = await fetcher.get<MovieDBMoviesResponse>(pathURL, {
       params: {
         page: options?.page ?? 1,
       },
     });
-    return nowPlaying.results.map(MovieMapper.fromMovieResultToMovieEntity);
+    return movies.results.map(MovieMapper.fromMovieResultToMovieEntity);
   } catch (err) {
     console.log('ERROR EN MOVIES');
     throw new Error(`Error fetching movies - ${pathURL}: ${err}`);

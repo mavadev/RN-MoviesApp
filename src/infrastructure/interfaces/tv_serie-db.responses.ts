@@ -15,7 +15,6 @@ export interface MovieDBTvSeriesResponse {
 // Tv Serie
 export interface MovieDBTvSerieResponse extends MovieDBMediaResponse {
   first_air_date: Date;
-  name: string;
   origin_country: string[];
   original_name: string;
 }

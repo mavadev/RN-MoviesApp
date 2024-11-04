@@ -1,2 +1,3 @@
 export {default as MovieScreen} from './movie/MovieScreen';
-export {default as TvSerieScreen} from './tv_serie/TvSerieScreen';
+export {default as SerieScreen} from './serie/SerieScreen';
+export {default as ActorScreen} from './actor/ActorScreen';

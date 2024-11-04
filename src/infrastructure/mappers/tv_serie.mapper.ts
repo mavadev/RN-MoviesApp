@@ -28,11 +28,13 @@ export class TvSerieMapper {
       firstDate: result.first_air_date,
       genres: result.genres.map(genre => genre.name),
       homepage: result.homepage,
-      companies: result.production_companies.map(company => ({
-        id: company.id,
-        name: company.name,
-        logo: company.logo_path ? `${TvSerieMapper.PATH_IMAGE}${company.logo_path}` : null,
-      })),
+      companies: result.production_companies
+        .filter(company => company.logo_path)
+        .map(company => ({
+          id: company.id,
+          name: company.name,
+          logo: company.logo_path ? `${TvSerieMapper.PATH_IMAGE}${company.logo_path}` : null,
+        })),
       rating: result.vote_average,
       seasons: result.seasons.map(season => ({
         airDate: season.air_date,
