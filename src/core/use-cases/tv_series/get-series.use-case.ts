@@ -1,5 +1,5 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {TvSerieMapper} from '../../../infrastructure/mappers/tv_serie.mapper';
+import {MediaMapper} from '../../../infrastructure/mappers/media.mapper';
 import type {MovieDBTvSeriesResponse} from '../../../infrastructure/interfaces/tv_serie-db.responses';
 import type {Media} from '../../entitites/media.entity';
 
@@ -19,8 +19,9 @@ export const getTvSeriesUseCase = async (
         page: options?.page ?? 1,
       },
     });
-    return nowPlaying.results.map(TvSerieMapper.fromTvSerieResultToEntity);
+    return nowPlaying.results.map(MediaMapper.fromMediaResultToEntity);
   } catch (error) {
+    console.log('ERROR EN SERIES');
     throw new Error(`Error fetching series - ${pathURL}: ${error}`);
   }
 };

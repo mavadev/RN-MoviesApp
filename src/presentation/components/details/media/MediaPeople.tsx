@@ -1,20 +1,22 @@
 import {FlatList, Text, View} from 'react-native';
-import CastActor from '../cast/CastActor';
-import type {Cast} from '../../../core/entitites/media.entity';
+import CastActor from '../../cast/CastActor';
+import type {Cast} from '../../../../core/entitites/media.entity';
 
 interface Props {
-  actors: Cast[];
+  title: string;
+  people: Cast[];
+  position?: 'left' | 'right';
 }
 
-export default function MovieActors({actors}: Props) {
+export default function MediaPeople({title, people, position = 'left'}: Props) {
   return (
     <View
       style={{
-        flexDirection: 'row',
+        marginBottom: 20,
         borderTopWidth: 2,
         borderBottomWidth: 2,
         borderBottomColor: 'black',
-        marginBottom: 20,
+        flexDirection: position == 'left' ? 'row' : 'row-reverse',
       }}>
       <View
         style={{
@@ -25,25 +27,28 @@ export default function MovieActors({actors}: Props) {
           alignItems: 'center',
         }}>
         <Text
+          numberOfLines={1}
           style={{
             position: 'absolute',
-            width: 110,
-            left: -22,
-            top: 75,
-            fontSize: 24,
+            width: 180,
+            height: 30,
+            fontSize: 20,
             color: 'white',
             letterSpacing: 2,
             fontWeight: 'bold',
-            transform: [{rotate: '-90deg'}],
+            textAlign: 'center',
+            textTransform: 'uppercase',
+            transform: [{rotate: position == 'left' ? '-90deg' : '90deg'}],
           }}>
-          Actores
+          {title}
         </Text>
       </View>
 
       <View style={{flex: 1, paddingVertical: 20, backgroundColor: 'whitesmoke'}}>
         <FlatList
           horizontal
-          data={actors}
+          data={people}
+          inverted={position == 'right'}
           keyExtractor={item => `${item.id}`}
           renderItem={({item: actor}) => <CastActor actor={actor} />}
         />

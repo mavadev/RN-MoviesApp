@@ -1,3 +1,5 @@
+import {Company} from './media.entity';
+
 export interface TvSerieDetails {
   backdrop: string;
   companies: Company[];
@@ -12,11 +14,6 @@ export interface TvSerieDetails {
   status: string;
   title: string;
   type: string;
-}
-export interface Company {
-  id: number;
-  name: string;
-  logo: null | string;
 }
 export interface Season {
   airDate: Date;

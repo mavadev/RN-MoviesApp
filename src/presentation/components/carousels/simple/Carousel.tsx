@@ -1,14 +1,13 @@
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {FlatList} from 'react-native-gesture-handler';
 import {NativeScrollEvent, NativeSyntheticEvent, StyleSheet, Text, View} from 'react-native';
 
 import CarouselItem from './Carousel-Item';
-import type {Movie} from '../../../../core/entitites/movie.entity';
-import type {TvSerie} from '../../../../core/entitites/tv_serie.entity';
+import type {Media} from '../../../../core/entitites/media.entity';
 
 interface Props {
   title?: string;
-  mediaList: (Movie | TvSerie)[];
+  mediaList: Media[];
   loadMovies?: (page: number) => void;
 }
 
@@ -24,18 +23,23 @@ export default function Carousel({mediaList, title, loadMovies}: Props) {
     setTimeout(() => (isGettingMovies.current = false), 200);
   }, [mediaList]);
 
-  const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    if (isGettingMovies.current) return;
+  const onScroll = useCallback(
+    () => (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (isGettingMovies.current) return;
 
-    const {contentOffset, layoutMeasurement, contentSize} = event.nativeEvent;
+      const {contentOffset, layoutMeasurement, contentSize} = event.nativeEvent;
 
-    const isEndReached = contentOffset.x + layoutMeasurement.width + 600 >= contentSize.width;
-    if (!isEndReached) return;
+      const isEndReached = contentOffset.x + layoutMeasurement.width + 600 >= contentSize.width;
+      if (!isEndReached) return;
 
-    // Cargar las demás películas
-    setCurrentPage(currentPage + 1);
-    isGettingMovies.current = true;
-  };
+      // Cargar las demás películas
+      setCurrentPage(currentPage + 1);
+      isGettingMovies.current = true;
+    },
+    [],
+  );
+
+  if (!mediaList.length) return <></>;
 
   return (
     <View>
@@ -56,9 +60,11 @@ export default function Carousel({mediaList, title, loadMovies}: Props) {
 const styles = StyleSheet.create({
   carouselTitle: {
     fontSize: 20,
+    letterSpacing: 2,
     marginLeft: 20,
-    marginBottom: 10,
+    marginBottom: 20,
     fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   carousel: {
     marginBottom: 20,

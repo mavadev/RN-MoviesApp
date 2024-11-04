@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {Cast} from '../../../core/entitites/cast.entity';
+import type {Cast} from '../../../core/entitites/media.entity';
 
 interface Props {
   actor: Cast;

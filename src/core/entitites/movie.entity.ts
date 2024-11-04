@@ -1,4 +1,6 @@
-export interface FullMovie {
+import {Company} from './media.entity';
+
+export interface MovieDetails {
   backdrop: string;
   budget: number;
   collection: Collection | null;
@@ -9,21 +11,15 @@ export interface FullMovie {
   id: number;
   isRestricted: boolean;
   poster: string;
-  productionCompanies: string[];
+  companies: Company[];
   rating: number;
   releaseDate: Date;
   status: string;
   title: string;
 }
-
 export interface Collection {
   backdrop: string;
   id: number;
   name: string;
   poster: string;
-}
-
-export interface MovieImage {
-  asp_ratio: number;
-  url: string;
 }

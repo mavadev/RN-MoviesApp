@@ -1,5 +1,5 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import type {Collection} from '../../../core/entitites/movie.entity';
+import type {Collection} from '../../../../core/entitites/movie.entity';
 
 interface Props {
   collection: Collection | null;
@@ -23,6 +23,7 @@ export default function MovieCollection({collection}: Props) {
 const styles = StyleSheet.create({
   container: {
     margin: 20,
+    marginTop: 0,
     borderRadius: 5,
     overflow: 'hidden',
     position: 'relative',

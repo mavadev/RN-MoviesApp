@@ -1,12 +1,12 @@
+import Ionicon from 'react-native-vector-icons/Ionicons';
 import {View, Image, Pressable, Text, StyleSheet} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import type {RootStackParams} from '../../../navigation/MainNavigation';
-import type {Movie} from '../../../../core/entitites/movie.entity';
-import type {TvSerie} from '../../../../core/entitites/tv_serie.entity';
+import type {Media} from '../../../../core/entitites/media.entity';
 
 interface Props {
   firstMovie?: boolean;
-  media: Movie | TvSerie;
+  media: Media;
 }
 
 export default function CarouselItem({firstMovie, media}: Props) {
@@ -19,8 +19,19 @@ export default function CarouselItem({firstMovie, media}: Props) {
           ...styles.containerPoster,
           opacity: pressed ? 0.85 : 1,
         })}
-        onPress={() => navigation.navigate('Details', {movieId: media.id})}>
-        <Image style={styles.poster} source={{uri: media.poster}} />
+        onPress={() =>
+          navigation.navigate(media.mediaType == 'movie' ? 'MovieDetails' : 'TvSerieDetails', {
+            mediaId: media.id,
+          })
+        }>
+        {media.poster ? (
+          <Image style={styles.poster} source={{uri: media.poster}} />
+        ) : (
+          <View style={styles.containerNoPoster}>
+            <Ionicon name="sad-outline" style={styles.noPosterIcon} />
+            <Text style={styles.noPosterTitle}>Poster Not Found</Text>
+          </View>
+        )}
       </Pressable>
       <Text style={{...styles.title}} numberOfLines={1}>
         {media.title}
@@ -32,10 +43,10 @@ export default function CarouselItem({firstMovie, media}: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginRight: 5,
+    width: 140,
+    marginRight: 10,
   },
   containerPoster: {
-    width: 140,
     height: 200,
     borderRadius: 5,
     marginBottom: 10,
@@ -52,6 +63,21 @@ const styles = StyleSheet.create({
   },
   poster: {
     flex: 1,
+  },
+  containerNoPoster: {
+    flex: 1,
+    paddingHorizontal: 5,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+  },
+  noPosterIcon: {
+    textAlign: 'center',
+    fontSize: 30,
+    marginBottom: 5,
+  },
+  noPosterTitle: {
+    textAlign: 'center',
+    fontSize: 18,
   },
   title: {
     fontSize: 14,

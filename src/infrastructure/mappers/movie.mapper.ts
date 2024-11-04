@@ -2,9 +2,9 @@ import type {
   MovieDBMovieResponse,
   MovieDBMovieDetailsResponse,
 } from '../interfaces/movie-db.responses';
+import type {MovieDetails} from '../../core/entitites/movie.entity';
 import type {MovieDBImage} from '../interfaces/media-db.responses';
-import type {Media} from '../../core/entitites/media.entity';
-import type {FullMovie, MovieImage} from '../../core/entitites/movie.entity';
+import type {Media, MediaImage} from '../../core/entitites/media.entity';
 
 export class MovieMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
@@ -19,7 +19,7 @@ export class MovieMapper {
     };
   }
 
-  static fromFullMovieResultToFullMovieEntity(result: MovieDBMovieDetailsResponse): FullMovie {
+  static fromFullMovieResultToFullMovieEntity(result: MovieDBMovieDetailsResponse): MovieDetails {
     return {
       budget: result.budget,
       backdrop: `${MovieMapper.PATH_IMAGE}${result.backdrop_path}`,
@@ -38,7 +38,11 @@ export class MovieMapper {
       id: result.id,
       isRestricted: result.adult,
       poster: `${MovieMapper.PATH_IMAGE}${result.poster_path}`,
-      productionCompanies: result.production_companies.map(company => company.name),
+      companies: result.production_companies.map(company => ({
+        id: company.id,
+        name: company.name,
+        logo: company.logo_path ? `${MovieMapper.PATH_IMAGE}${company.logo_path}` : null,
+      })),
       rating: result.vote_average,
       releaseDate: new Date(result.release_date),
       status: result.status,
@@ -46,7 +50,7 @@ export class MovieMapper {
     };
   }
 
-  static fromMovieDBImageToEntity(result: MovieDBImage): MovieImage {
+  static fromMovieDBImageToEntity(result: MovieDBImage): MediaImage {
     return {
       url: `${MovieMapper.PATH_IMAGE}${result.file_path}`,
       asp_ratio: result.aspect_ratio,

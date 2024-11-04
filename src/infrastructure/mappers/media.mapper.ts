@@ -4,7 +4,7 @@ import type {MovieDBMediaCast, MovieDBMediaResponse} from '../interfaces/media-d
 export class MediaMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-  static fromTvSerieResultToEntity(result: MovieDBMediaResponse): Media {
+  static fromMediaResultToEntity(result: MovieDBMediaResponse): Media {
     return {
       id: result.id,
       title:

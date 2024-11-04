@@ -1,5 +1,0 @@
-export {default as MovieHeader} from './MovieHeader';
-export {default as MovieDetails} from './MovieDetails';
-export {default as MovieCaptures} from './MovieCaptures';
-export {default as MovieActors} from './MovieActors';
-export {default as MovieCollection} from './MovieCollection';

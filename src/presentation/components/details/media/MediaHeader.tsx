@@ -3,11 +3,11 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-import type {MovieImage} from '../../../core/entitites/movie.entity';
+import type {MediaImage} from '../../../../core/entitites/media.entity';
 
 interface Props {
   backdrop: string;
-  logo: MovieImage;
+  logo: MediaImage;
 }
 
 export default function MovieHeader({backdrop, logo}: Props) {
@@ -20,7 +20,7 @@ export default function MovieHeader({backdrop, logo}: Props) {
         <Image style={styles.backdrop} source={{uri: backdrop}} />
         <LinearGradient
           start={{x: 0.5, y: 0.5}}
-          colors={['transparent', 'black']}
+          colors={['transparent', 'rgba(0, 0, 0, 0.5)']}
           style={styles.containerAbsolute}>
           <Pressable
             onPress={() => navigation.goBack()}
@@ -34,15 +34,17 @@ export default function MovieHeader({backdrop, logo}: Props) {
         </LinearGradient>
       </View>
       {/* Logo */}
-      <View style={styles.containerLogo}>
-        <Image
-          source={{uri: logo.url}}
-          style={{
-            ...styles.logo,
-            aspectRatio: logo.asp_ratio,
-          }}
-        />
-      </View>
+      {logo && (
+        <View style={styles.containerLogo}>
+          <Image
+            source={{uri: logo.url}}
+            style={{
+              ...styles.logo,
+              aspectRatio: logo.asp_ratio,
+            }}
+          />
+        </View>
+      )}
     </>
   );
 }
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   backdrop: {
-    aspectRatio: 16 / 9,
+    aspectRatio: 17 / 11,
   },
   containerAbsolute: {
     position: 'absolute',

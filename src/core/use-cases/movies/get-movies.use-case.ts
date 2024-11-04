@@ -21,6 +21,7 @@ export const getMoviesUseCase = async (
     });
     return nowPlaying.results.map(MovieMapper.fromMovieResultToMovieEntity);
   } catch (err) {
+    console.log('ERROR EN MOVIES');
     throw new Error(`Error fetching movies - ${pathURL}: ${err}`);
   }
 };

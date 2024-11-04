@@ -1,8 +1,8 @@
 import {FlatList, Image, StyleSheet} from 'react-native';
-import type {MovieImage} from '../../../core/entitites/movie.entity';
+import type {MediaImage} from '../../../../core/entitites/media.entity';
 
 interface Props {
-  captures: MovieImage[];
+  captures: MediaImage[];
 }
 
 export default function MovieCaptures({captures = []}: Props) {
@@ -20,7 +20,7 @@ export default function MovieCaptures({captures = []}: Props) {
         <Image
           source={{uri: capture.url}}
           style={{
-            height: 120,
+            height: 150,
             marginRight: 10,
             marginLeft: index == 0 ? 20 : 0,
             aspectRatio: capture.asp_ratio,

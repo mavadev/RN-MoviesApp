@@ -1,29 +1,33 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
 import {MovieMapper} from '../../../infrastructure/mappers/movie.mapper';
 import type {MovieDBMediaImagesResponse} from '../../../infrastructure/interfaces/media-db.responses';
-import type {MovieImage} from '../../entitites/movie.entity';
+import type {Media, MediaImage} from '../../entitites/media.entity';
 
 interface ListImages {
-  logo: MovieImage | null;
-  captures: MovieImage[];
+  logo: MediaImage | null;
+  captures: MediaImage[];
 }
 
-export const getImagesUseCase = async (
+export const getMediaImagesUseCase = async (
   fetcher: HttpAdapter,
-  movieId: number,
+  mediaId: number,
+  mediaType: Media['mediaType'] = 'movie',
 ): Promise<ListImages> => {
   try {
     // Obtener logo en español
-    let {logos} = await fetcher.get<MovieDBMediaImagesResponse>(`/movie/${movieId}/images`);
+    let {logos} = await fetcher.get<MovieDBMediaImagesResponse>(`/${mediaType}/${mediaId}/images`);
 
-    // Capturas de la Película (lenguaje en null)
-    const {backdrops} = await fetcher.get<MovieDBMediaImagesResponse>(`/movie/${movieId}/images`, {
-      params: {language: null},
-    });
+    // Capturas (lenguaje en null)
+    const {backdrops} = await fetcher.get<MovieDBMediaImagesResponse>(
+      `/${mediaType}/${mediaId}/images`,
+      {
+        params: {language: null},
+      },
+    );
 
     // Obtener logo en inglés, caso no exista en español
     if (logos.length <= 0) {
-      ({logos} = await fetcher.get<MovieDBMediaImagesResponse>(`/movie/${movieId}/images`, {
+      ({logos} = await fetcher.get<MovieDBMediaImagesResponse>(`/${mediaType}/${mediaId}/images`, {
         params: {language: 'en'},
       }));
     }
@@ -36,6 +40,7 @@ export const getImagesUseCase = async (
       captures,
     };
   } catch (error) {
-    throw new Error(`Cannot get images of the movie: ${error}`);
+    console.log('ERROR MEDIA IMAGES');
+    throw new Error(`Cannot get images of the ${mediaType}: ${error}`);
   }
 };

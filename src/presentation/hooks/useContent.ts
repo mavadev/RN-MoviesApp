@@ -53,7 +53,8 @@ export const useContent = () => {
         setMoviesPopular(prev => [...prev, ...newMovies]);
         return;
       case ContentPaths.TvSeriesPopular:
-        setSeriesPopular(prev => [...prev, ...newMovies]);
+        const newSeries = await getTvSeriesUseCase(movieDBFetcher, ContentPaths.TvSeriesPopular);
+        setSeriesPopular(prev => [...prev, ...newSeries]);
         return;
       default:
         return;
