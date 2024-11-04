@@ -57,12 +57,12 @@ const styles = StyleSheet.create({
     aspectRatio: 17 / 11,
   },
   containerAbsolute: {
-    position: 'absolute',
     inset: 0,
+    position: 'absolute',
   },
   containerButton: {
-    padding: 10,
-    margin: 5,
+    padding: 20,
+    alignSelf: 'flex-start',
   },
   button: {
     color: 'white',

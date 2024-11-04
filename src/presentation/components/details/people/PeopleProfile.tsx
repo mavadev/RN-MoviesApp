@@ -1,5 +1,7 @@
 import Ionicon from 'react-native-vector-icons/Ionicons';
-import {Image, StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {Image, Pressable, StyleSheet, View} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // 0	Not set / not specified
 // 1	Female
@@ -26,10 +28,23 @@ interface Props {
 }
 
 export default function PeopleProfile({avatar, gender}: Props) {
+  const navigation = useNavigation();
+  const {top} = useSafeAreaInsets();
+
   return (
     <>
       {/* Backdrop */}
-      <View style={styles.backdrop} />
+      <View style={styles.backdrop}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={({pressed}) => ({
+            ...styles.containerButton,
+            opacity: pressed ? 0.8 : 1,
+            marginTop: top,
+          })}>
+          <Ionicon name="arrow-back-outline" style={styles.button} />
+        </Pressable>
+      </View>
       {/* Profile */}
       <View style={styles.container}>
         <View style={styles.containerProfile}>
@@ -53,6 +68,14 @@ const styles = StyleSheet.create({
   backdrop: {
     height: 200,
     backgroundColor: '#202227',
+  },
+  containerButton: {
+    padding: 20,
+    alignSelf: 'flex-start',
+  },
+  button: {
+    color: 'white',
+    fontSize: 30,
   },
   container: {
     height: 110,
