@@ -16,7 +16,7 @@ export default function ActorScreen({route}: Props) {
   if (isLoading || !actor) return <Loader />;
 
   return (
-    <ScrollView>
+    <ScrollView style={{marginBottom: 20}}>
       {/* Profile */}
       <PeopleProfile avatar={actor.avatar} gender={actor.gender} />
       {/* Details */}

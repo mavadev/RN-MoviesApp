@@ -22,7 +22,7 @@ export default function SerieScreen({route}: Props) {
   if (isLoading) return <Loader />;
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={{marginBottom: 20}}>
       <StatusBar backgroundColor="transparent" />
       {/* Header */}
       <MediaHeader backdrop={details?.backdrop!} logo={logo!} />
@@ -32,16 +32,10 @@ export default function SerieScreen({route}: Props) {
       <MediaCaptures captures={captures!} />
       {/* Actores */}
       <MediaPeople title="Elenco" people={cast!} />
-      {/* Creador */}
-
-      {/* HomePage / Estado / Rating */}
-
       {/* Compañias */}
       <MediaCompanies companies={details?.companies!} />
-
       {/* Seasons */}
       {/* <Carousel mediaList={details?.seasons!} title="Temporadas" /> */}
-
       {/* Similares */}
       <Carousel mediaList={similar!} title="Similares" />
     </ScrollView>

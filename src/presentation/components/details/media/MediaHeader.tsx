@@ -1,9 +1,7 @@
-import {Image, Pressable, StyleSheet, View} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useNavigation} from '@react-navigation/native';
-import Ionicon from 'react-native-vector-icons/Ionicons';
+import {Image, StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import type {MediaImage} from '../../../../core/entitites/media.entity';
+import {ButtonBack} from '../../ui';
 
 interface Props {
   backdrop: string;
@@ -11,9 +9,6 @@ interface Props {
 }
 
 export default function MovieHeader({backdrop, logo}: Props) {
-  const navigation = useNavigation();
-  const {top} = useSafeAreaInsets();
-
   return (
     <>
       <View style={styles.container}>
@@ -22,15 +17,7 @@ export default function MovieHeader({backdrop, logo}: Props) {
           start={{x: 0.5, y: 0.5}}
           colors={['transparent', 'rgba(0, 0, 0, 0.5)']}
           style={styles.containerAbsolute}>
-          <Pressable
-            onPress={() => navigation.goBack()}
-            style={({pressed}) => ({
-              ...styles.containerButton,
-              opacity: pressed ? 0.8 : 1,
-              marginTop: top,
-            })}>
-            <Ionicon name="arrow-back-outline" style={styles.button} />
-          </Pressable>
+          <ButtonBack />
         </LinearGradient>
       </View>
       {/* Logo */}
@@ -59,14 +46,6 @@ const styles = StyleSheet.create({
   containerAbsolute: {
     inset: 0,
     position: 'absolute',
-  },
-  containerButton: {
-    padding: 20,
-    alignSelf: 'flex-start',
-  },
-  button: {
-    color: 'white',
-    fontSize: 30,
   },
   containerLogo: {
     height: 30,

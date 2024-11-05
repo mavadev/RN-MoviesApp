@@ -23,7 +23,7 @@ export default function MovieScreen({route}: Props) {
   if (isLoading) return <Loader />;
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={{marginBottom: 20}}>
       <StatusBar backgroundColor="transparent" />
       {/* Header */}
       <MediaHeader backdrop={details?.backdrop!} logo={logo!} />
