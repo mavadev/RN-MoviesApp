@@ -1,29 +1,22 @@
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import {View, Image, Pressable, Text, StyleSheet} from 'react-native';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
-import type {RootStackParams} from '../../../navigation/MainNavigation';
 import type {Media} from '../../../../core/entitites/media.entity';
 
 interface Props {
   firstMovie?: boolean;
   media: Media;
+  onItemPress: () => void;
 }
 
-export default function CarouselItem({firstMovie, media}: Props) {
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
-
+export default function CarouselItem({firstMovie, media, onItemPress}: Props) {
   return (
     <View style={{...styles.container, marginLeft: firstMovie ? 20 : 0}}>
       <Pressable
+        onPress={onItemPress}
         style={({pressed}) => ({
           ...styles.containerPoster,
           opacity: pressed ? 0.85 : 1,
-        })}
-        onPress={() =>
-          navigation.navigate(media.mediaType == 'movie' ? 'MovieScreen' : 'SerieScreen', {
-            mediaId: media.id,
-          })
-        }>
+        })}>
         {media.poster ? (
           <Image style={styles.poster} source={{uri: media.poster}} />
         ) : (

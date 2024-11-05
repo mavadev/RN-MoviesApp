@@ -34,7 +34,7 @@ export interface MovieDBTvSerieDetailsResponse extends MovieDBMediaDetailsRespon
   number_of_episodes: number;
   number_of_seasons: number;
   original_name: string;
-  seasons: Season[];
+  seasons: MovieDBMediaResponse[];
   type: string;
 }
 export interface CreatedBy {
@@ -59,14 +59,4 @@ export interface LastEpisodeToAir {
   season_number: number;
   show_id: number;
   still_path: string;
-}
-export interface Season {
-  air_date: Date;
-  episode_count: number;
-  id: number;
-  name: string;
-  overview: string;
-  poster_path: string;
-  season_number: number;
-  vote_average: number;
 }

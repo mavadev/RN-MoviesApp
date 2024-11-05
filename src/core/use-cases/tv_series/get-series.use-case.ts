@@ -14,12 +14,12 @@ export const getTvSeriesUseCase = async (
   options?: Options,
 ): Promise<Media[]> => {
   try {
-    const nowPlaying = await fetcher.get<MovieDBTvSeriesResponse>(pathURL, {
+    const series = await fetcher.get<MovieDBTvSeriesResponse>(pathURL, {
       params: {
         page: options?.page ?? 1,
       },
     });
-    return nowPlaying.results.map(MediaMapper.fromMediaResultToEntity);
+    return series.results.map(result => MediaMapper.fromMediaResultToEntity(result, 'tv'));
   } catch (error) {
     console.log('ERROR EN SERIES');
     throw new Error(`Error fetching series - ${pathURL}: ${error}`);

@@ -1,22 +1,9 @@
-import type {
-  MovieDBTvSerieResponse,
-  MovieDBTvSerieDetailsResponse,
-} from '../interfaces/tv_serie-db.responses';
-import type {Media} from '../../core/entitites/media.entity';
+import type {MovieDBTvSerieDetailsResponse} from '../interfaces/tv_serie-db.responses';
 import type {TvSerieDetails} from '../../core/entitites/tv_serie.entity';
+import {MediaMapper} from './media.mapper';
 
 export class TvSerieMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
-
-  static fromTvSerieResultToEntity(result: MovieDBTvSerieResponse): Media {
-    return {
-      backdrop: `${TvSerieMapper.PATH_IMAGE}${result.backdrop_path}`,
-      id: result.id,
-      mediaType: 'tv',
-      poster: `${TvSerieMapper.PATH_IMAGE}${result.poster_path}`,
-      title: result.name,
-    };
-  }
 
   static fromTvSerieDetailsResultToEntity(result: MovieDBTvSerieDetailsResponse): TvSerieDetails {
     return {
@@ -36,16 +23,9 @@ export class TvSerieMapper {
           logo: company.logo_path ? `${TvSerieMapper.PATH_IMAGE}${company.logo_path}` : null,
         })),
       rating: result.vote_average,
-      seasons: result.seasons.map(season => ({
-        airDate: season.air_date,
-        description: season.overview,
-        episodeCount: season.episode_count,
-        id: season.id,
-        poster: `${TvSerieMapper.PATH_IMAGE}${season.poster_path}`,
-        rating: season.vote_average,
-        seasonNumber: season.season_number,
-        title: season.name,
-      })),
+      seasons: result.seasons
+        .filter(media => media.poster_path)
+        .map(media => MediaMapper.fromMediaResultToEntity(media, 'season')),
       status: result.status,
       type: result.type,
     };

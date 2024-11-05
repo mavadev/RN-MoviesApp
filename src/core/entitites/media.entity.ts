@@ -1,9 +1,9 @@
 export interface Media {
-  backdrop: string;
   id: number;
-  poster: string;
   title: string;
-  mediaType: 'movie' | 'tv';
+  poster: string | null;
+  backdrop: string | null;
+  mediaType: 'movie' | 'tv' | 'season';
 }
 export interface Cast {
   id: number;

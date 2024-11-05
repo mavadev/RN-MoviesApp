@@ -10,18 +10,21 @@ import {
 } from '../../core/use-cases/media';
 import {getMovieByIdUseCase} from '../../core/use-cases/movie/get-movie-by-id.use-case';
 
-interface MovieState {
+interface Images {
   logo: MediaImage | null;
   captures: MediaImage[];
-  details: MovieDetails;
+}
+
+interface MovieState {
+  movie: MovieDetails;
   cast: Cast[];
-  crew: Cast[];
+  images: Images;
   similar: Media[];
 }
 
 export const useMovie = (movieId: number) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [movie, setMovie] = useState<MovieState>();
+  const [movieState, setMovieState] = useState<MovieState>();
 
   useEffect(() => {
     loadMovie();
@@ -30,31 +33,29 @@ export const useMovie = (movieId: number) => {
   const loadMovie = async () => {
     !isLoading && setIsLoading(true);
 
-    const fullMoviePromise = getMovieByIdUseCase(movieDBFetcher, movieId);
+    const moviePromise = getMovieByIdUseCase(movieDBFetcher, movieId);
     const castPromise = getMediaCreditsUseCase(movieDBFetcher, movieId);
     const imagesPromise = getMediaImagesUseCase(movieDBFetcher, movieId);
-    const moviesSimilarPromise = getSimilarMediaUseCase(movieDBFetcher, movieId);
+    const similarPromise = getSimilarMediaUseCase(movieDBFetcher, movieId);
 
-    const [fullMovie, credits, images, moviesSimilar] = await Promise.all([
-      fullMoviePromise,
+    const [movie, cast, images, similar] = await Promise.all([
+      moviePromise,
       castPromise,
       imagesPromise,
-      moviesSimilarPromise,
+      similarPromise,
     ]);
 
-    setMovie({
-      logo: images.logo,
-      captures: images.captures,
-      details: fullMovie,
-      cast: credits.cast,
-      crew: credits.crew,
-      similar: moviesSimilar,
+    setMovieState({
+      movie,
+      cast,
+      images,
+      similar,
     });
     setIsLoading(false);
   };
 
   return {
-    ...movie,
+    ...movieState,
     isLoading,
   };
 };

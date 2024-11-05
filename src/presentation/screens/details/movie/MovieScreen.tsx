@@ -18,7 +18,7 @@ interface Props extends StackScreenProps<RootStackParams, 'MovieScreen'> {}
 
 export default function MovieScreen({route}: Props) {
   const {mediaId} = route.params;
-  const {logo, details, captures, cast, similar, isLoading} = useMovie(mediaId);
+  const {movie, images, cast, similar, isLoading} = useMovie(mediaId);
 
   if (isLoading) return <Loader />;
 
@@ -26,17 +26,17 @@ export default function MovieScreen({route}: Props) {
     <ScrollView style={{marginBottom: 20}}>
       <StatusBar backgroundColor="transparent" />
       {/* Header */}
-      <MediaHeader backdrop={details?.backdrop!} logo={logo!} />
+      <MediaHeader backdrop={movie?.backdrop!} logo={images?.logo!} />
       {/* Detalles */}
-      <MediaDetails description={details?.description!} genres={details?.genres!} />
+      <MediaDetails description={movie?.description!} genres={movie?.genres!} />
       {/* Capturas o Backdrops */}
-      <MediaCaptures captures={captures!} />
+      <MediaCaptures captures={images?.captures!} />
       {/* Actores */}
       <MediaPeople title="Elenco" people={cast!} />
       {/* Productoras */}
-      <MediaCompanies companies={details?.companies!} />
+      <MediaCompanies companies={movie?.companies!} />
       {/* Colección */}
-      <MovieCollection collection={details?.collection!} />
+      <MovieCollection collection={movie?.collection!} />
       {/* Similares */}
       <Carousel mediaList={similar!} title="Similares" />
     </ScrollView>

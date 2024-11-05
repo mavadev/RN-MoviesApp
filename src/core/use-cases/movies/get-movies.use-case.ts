@@ -1,5 +1,5 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {MovieMapper} from '../../../infrastructure/mappers/movie.mapper';
+import {MediaMapper} from '../../../infrastructure/mappers/media.mapper';
 import type {MovieDBMoviesResponse} from '../../../infrastructure/interfaces/movie-db.responses';
 import type {Media} from '../../entitites/media.entity';
 
@@ -19,7 +19,7 @@ export const getMoviesUseCase = async (
         page: options?.page ?? 1,
       },
     });
-    return movies.results.map(MovieMapper.fromMovieResultToMovieEntity);
+    return movies.results.map(result => MediaMapper.fromMediaResultToEntity(result));
   } catch (err) {
     console.log('ERROR EN MOVIES');
     throw new Error(`Error fetching movies - ${pathURL}: ${err}`);

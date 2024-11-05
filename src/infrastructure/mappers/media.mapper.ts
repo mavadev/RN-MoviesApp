@@ -1,11 +1,18 @@
-import type {Cast, Media} from '../../core/entitites/media.entity';
-import type {MovieDBMediaCast, MovieDBMediaResponse} from '../interfaces/media-db.responses';
+import type {Cast, Media, MediaImage} from '../../core/entitites/media.entity';
+import type {
+  MovieDBImage,
+  MovieDBMediaCast,
+  MovieDBMediaResponse,
+} from '../interfaces/media-db.responses';
 
 export class MediaMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-  static fromMediaResultToEntity(result: MovieDBMediaResponse, type?: Media['mediaType']): Media {
-    const mediaType = type || result.media_type;
+  static fromMediaResultToEntity(
+    result: MovieDBMediaResponse,
+    type: Media['mediaType'] = 'movie',
+  ): Media {
+    const mediaType = type ? type : result.media_type;
 
     return {
       id: result.id,
@@ -15,7 +22,7 @@ export class MediaMapper {
           ? result.title || 'Título no disponible'
           : result.name || 'Título no disponible',
       poster: `${MediaMapper.PATH_IMAGE}${result.poster_path}`,
-      backdrop: `${MediaMapper.PATH_IMAGE}${result.backdrop_path}`,
+      backdrop: result.backdrop_path ? `${MediaMapper.PATH_IMAGE}${result.backdrop_path}` : null,
     };
   }
 
@@ -27,6 +34,13 @@ export class MediaMapper {
       avatar: actor.profile_path
         ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
         : 'https://i.stack.imgur.com/l60Hf.png',
+    };
+  }
+
+  static fromMovieDBImageToEntity(result: MovieDBImage): MediaImage {
+    return {
+      url: `${MediaMapper.PATH_IMAGE}${result.file_path}`,
+      asp_ratio: result.aspect_ratio,
     };
   }
 }

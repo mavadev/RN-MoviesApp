@@ -10,18 +10,21 @@ import {
 } from '../../core/use-cases/media';
 import {getTvSerieByIdUseCase} from '../../core/use-cases/tv_serie/get-tv-serie-by-id.use-case';
 
-interface TvSerieState {
+interface Images {
   logo: MediaImage | null;
   captures: MediaImage[];
-  details: TvSerieDetails;
+}
+
+interface SerieState {
+  serie: TvSerieDetails;
   cast: Cast[];
-  crew: Cast[];
+  images: Images;
   similar: Media[];
 }
 
-export const useTvSerie = (tvSerieId: number) => {
+export const useSerie = (tvSerieId: number) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [tvSerie, setTvSerie] = useState<TvSerieState>();
+  const [serieState, setSerieState] = useState<SerieState>();
 
   useEffect(() => {
     loadTvSerie();
@@ -30,31 +33,29 @@ export const useTvSerie = (tvSerieId: number) => {
   const loadTvSerie = async () => {
     !isLoading && setIsLoading(true);
 
-    const fullTvSeriePromise = getTvSerieByIdUseCase(movieDBFetcher, tvSerieId);
+    const seriePromise = getTvSerieByIdUseCase(movieDBFetcher, tvSerieId);
     const castPromise = getMediaCreditsUseCase(movieDBFetcher, tvSerieId, 'tv');
     const imagesPromise = getMediaImagesUseCase(movieDBFetcher, tvSerieId, 'tv');
-    const similarSeriePromise = getSimilarMediaUseCase(movieDBFetcher, tvSerieId, 'tv');
+    const similarPromise = getSimilarMediaUseCase(movieDBFetcher, tvSerieId, 'tv');
 
-    const [tvDetails, credits, images, similarSeries] = await Promise.all([
-      fullTvSeriePromise,
+    const [serie, cast, images, similar] = await Promise.all([
+      seriePromise,
       castPromise,
       imagesPromise,
-      similarSeriePromise,
+      similarPromise,
     ]);
 
-    setTvSerie({
-      logo: images.logo,
-      captures: images.captures,
-      details: tvDetails,
-      cast: credits.cast,
-      crew: credits.crew,
-      similar: similarSeries,
+    setSerieState({
+      serie,
+      images,
+      cast,
+      similar,
     });
     setIsLoading(false);
   };
 
   return {
-    ...tvSerie,
+    ...serieState,
     isLoading,
   };
 };

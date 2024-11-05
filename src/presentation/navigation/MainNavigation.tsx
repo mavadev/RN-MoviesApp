@@ -1,10 +1,19 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen, MovieScreen, SerieScreen, ActorScreen, CollectionScreen} from '../screens';
+import {
+  HomeScreen,
+  MovieScreen,
+  SerieScreen,
+  ActorScreen,
+  CollectionScreen,
+  SeasonScreen,
+} from '../screens';
 
 export type RootStackParams = {
   Content: undefined;
   MovieScreen: {mediaId: number};
   SerieScreen: {mediaId: number};
+  SeasonScreen: {serieId: number; mediaId: number};
+
   ActorScreen: {actorId: number};
   CollectionScreen: {collectionId: number};
 };
@@ -22,9 +31,10 @@ export default function MainNavigator() {
       }}>
       <Stack.Screen name="Content" component={HomeScreen} />
       <Stack.Screen name="MovieScreen" component={MovieScreen} />
-      <Stack.Screen name="SerieScreen" component={SerieScreen} />
-      <Stack.Screen name="ActorScreen" component={ActorScreen} />
       <Stack.Screen name="CollectionScreen" component={CollectionScreen} />
+      <Stack.Screen name="SerieScreen" component={SerieScreen} />
+      <Stack.Screen name="SeasonScreen" component={SeasonScreen} />
+      <Stack.Screen name="ActorScreen" component={ActorScreen} />
     </Stack.Navigator>
   );
 }

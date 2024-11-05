@@ -1,5 +1,5 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {MovieMapper} from '../../../infrastructure/mappers/movie.mapper';
+import {MediaMapper} from '../../../infrastructure/mappers/media.mapper';
 import type {MovieDBMediaImagesResponse} from '../../../infrastructure/interfaces/media-db.responses';
 import type {Media, MediaImage} from '../../entitites/media.entity';
 
@@ -32,8 +32,8 @@ export const getMediaImagesUseCase = async (
       }));
     }
 
-    const logo = logos.length > 0 ? MovieMapper.fromMovieDBImageToEntity(logos[0]) : null;
-    const captures = backdrops.map(MovieMapper.fromMovieDBImageToEntity);
+    const logo = logos.length > 0 ? MediaMapper.fromMovieDBImageToEntity(logos[0]) : null;
+    const captures = backdrops.map(MediaMapper.fromMovieDBImageToEntity);
 
     return {
       logo,
