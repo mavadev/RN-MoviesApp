@@ -1,12 +1,12 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {PeopleMapper} from '../../../infrastructure/mappers/people.mapper';
-import type {MovieDBPeopleDetailsResponse} from '../../../infrastructure/interfaces/actor-db.responses';
-import type {PeopleDetails} from '../../entitites/people.entity';
+import {PeopleMapper} from '../../../infrastructure/mappers/person.mapper';
+import type {MovieDBPeopleDetailsResponse} from '../../../infrastructure/interfaces/person-db.responses';
+import type {PersonDetails} from '../../entitites/person.entity';
 
 export const getPeopleByIdUseCase = async (
   fetcher: HttpAdapter,
   peopleId: number,
-): Promise<PeopleDetails> => {
+): Promise<PersonDetails> => {
   try {
     const actor = await fetcher.get<MovieDBPeopleDetailsResponse>(`/person/${peopleId}`);
     return PeopleMapper.fromMovieDBPeopleDetailsToEntity(actor);

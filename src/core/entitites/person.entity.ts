@@ -1,4 +1,4 @@
-export interface PeopleDetails {
+export interface PersonDetails {
   name: string;
   birthday: Date;
   deathday: null;

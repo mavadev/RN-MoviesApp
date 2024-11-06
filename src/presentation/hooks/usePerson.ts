@@ -1,21 +1,21 @@
 import {useEffect, useState} from 'react';
-import type {PeopleDetails} from '../../core/entitites/people.entity';
+import type {PersonDetails} from '../../core/entitites/person.entity';
 import type {Media} from '../../core/entitites/media.entity';
 
 import {
   getPeopleByIdUseCase,
   getPeopleMoviesUseCase,
   getPeopleSeriesUseCase,
-} from '../../core/use-cases/people/';
+} from '../../core/use-cases/person';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
 
 interface ActorState {
-  actor: PeopleDetails;
+  actor: PersonDetails;
   movies: Media[];
   series: Media[];
 }
 
-export const useActor = (actorID: number) => {
+export const usePerson = (actorID: number) => {
   const [isLoading, setIsLoading] = useState(true);
   const [actorState, setActorState] = useState<ActorState>();
 

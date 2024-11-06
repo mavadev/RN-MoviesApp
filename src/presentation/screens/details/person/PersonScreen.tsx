@@ -2,16 +2,16 @@ import {ScrollView} from 'react-native';
 import type {StackScreenProps} from '@react-navigation/stack';
 import type {RootStackParams} from '../../../navigation/MainNavigation';
 
-import {useActor} from '../../../hooks/useActor';
+import {usePerson} from '../../../hooks/usePerson';
 import {Loader} from '../../../components/ui';
 import {Carousel} from '../../../components/carousels';
-import {PeopleProfile, PeopleDetails} from '../../../components/details/people';
+import {PeopleProfile, PeopleDetails} from '../../../components/details/person';
 
 interface Props extends StackScreenProps<RootStackParams, 'ActorScreen'> {}
 
 export default function ActorScreen({route}: Props) {
   const {actorId} = route.params;
-  const {isLoading, actor, movies, series} = useActor(actorId);
+  const {isLoading, actor, movies, series} = usePerson(actorId);
 
   if (isLoading || !actor) return <Loader />;
 

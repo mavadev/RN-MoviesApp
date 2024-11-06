@@ -1,5 +1,5 @@
 import {FlatList, Text, View} from 'react-native';
-import CastActor from '../../cast/CastActor';
+import CastActor from '../../people/PeoplePerson';
 import type {Cast} from '../../../../core/entitites/media.entity';
 
 interface Props {

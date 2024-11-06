@@ -1,10 +1,10 @@
-import type {PeopleDetails} from '../../core/entitites/people.entity';
-import type {MovieDBPeopleDetailsResponse} from '../interfaces/actor-db.responses';
+import type {PersonDetails} from '../../core/entitites/person.entity';
+import type {MovieDBPeopleDetailsResponse} from '../interfaces/person-db.responses';
 
 export class PeopleMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-  static fromMovieDBPeopleDetailsToEntity(response: MovieDBPeopleDetailsResponse): PeopleDetails {
+  static fromMovieDBPeopleDetailsToEntity(response: MovieDBPeopleDetailsResponse): PersonDetails {
     return {
       avatar: response.profile_path
         ? `${this.PATH_IMAGE}${response.profile_path}`

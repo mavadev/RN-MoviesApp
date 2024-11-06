@@ -1,17 +1,17 @@
 import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
 import {MediaMapper} from '../../../infrastructure/mappers/media.mapper';
-import type {MovieDBPeopleMoviesResponse} from '../../../infrastructure/interfaces/actor-db.responses';
+import type {MovieDBPeopleTvCreditsResponse} from '../../../infrastructure/interfaces/person-db.responses';
 import type {Media} from '../../entitites/media.entity';
 
-export const getPeopleMoviesUseCase = async (
+export const getPeopleSeriesUseCase = async (
   fetcher: HttpAdapter,
   actorID: number,
 ): Promise<Media[]> => {
   try {
-    const {cast} = await fetcher.get<MovieDBPeopleMoviesResponse>(
-      `/person/${actorID}/movie_credits`,
+    const {cast} = await fetcher.get<MovieDBPeopleTvCreditsResponse>(
+      `/person/${actorID}/tv_credits`,
     );
-    return cast.map(movie => MediaMapper.fromMediaResultToEntity(movie, 'movie'));
+    return cast.map(serie => MediaMapper.fromMediaResultToEntity(serie, 'tv'));
   } catch (error) {
     throw new Error(`Error fetching people movies: ${error}`);
   }
