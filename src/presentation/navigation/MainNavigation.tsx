@@ -12,7 +12,7 @@ export type RootStackParams = {
   Content: undefined;
   MovieScreen: {mediaId: number};
   SerieScreen: {mediaId: number};
-  SeasonScreen: {serieId: number; mediaId: number};
+  SeasonScreen: {serieId: number; seasonNumber: number};
 
   ActorScreen: {actorId: number};
   CollectionScreen: {collectionId: number};

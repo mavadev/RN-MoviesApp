@@ -18,13 +18,13 @@ export default function CarouselSimple({mediaList, title, loadMovies, serieId}: 
   const {onScroll} = useCarousel(mediaList, loadMovies);
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
-  const handleItemPress = (media: Media) => {
+  const handleItemPress = (media: Media, seasonNumber: number) => {
     if (media.mediaType == 'movie') {
       navigation.navigate('MovieScreen', {mediaId: media.id});
     } else if (media.mediaType == 'tv') {
       navigation.navigate('SerieScreen', {mediaId: media.id});
     } else if (serieId) {
-      navigation.navigate('SeasonScreen', {serieId, mediaId: media.id});
+      navigation.navigate('SeasonScreen', {serieId, seasonNumber});
     }
   };
 
@@ -44,7 +44,7 @@ export default function CarouselSimple({mediaList, title, loadMovies, serieId}: 
           <CarouselItem
             media={media}
             firstMovie={index == 0}
-            onItemPress={() => handleItemPress(media)}
+            onItemPress={() => handleItemPress(media, index + 1)}
           />
         )}
       />

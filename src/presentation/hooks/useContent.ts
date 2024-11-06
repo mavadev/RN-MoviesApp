@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import {getTrendingAllUseCase} from '../../core/use-cases/trending/get-all.use-case copy';
+import {getTrendingAllUseCase} from '../../core/use-cases/trending/get-trending-all.use-case';
 import {getMoviesUseCase} from '../../core/use-cases';
 import {getTvSeriesUseCase} from '../../core/use-cases/tv_series/get-series.use-case';
 import type {Media} from '../../core/entitites/media.entity';

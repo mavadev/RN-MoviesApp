@@ -1,13 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
-import {Pressable, StyleSheet} from 'react-native';
+import {Pressable, StyleSheet, Text} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   background?: boolean;
+  position?: 'relative' | 'absolute';
 }
 
-export default function ButtonBack({background = false}: Props) {
+export default function ButtonBack({background = false, position = 'absolute'}: Props) {
   const navigation = useNavigation();
   const {top} = useSafeAreaInsets();
 
@@ -16,6 +17,7 @@ export default function ButtonBack({background = false}: Props) {
       onPress={() => navigation.goBack()}
       style={({pressed}) => ({
         ...styles.containerButton,
+        position,
         marginTop: top,
         opacity: pressed ? 0.8 : 1,
         backgroundColor: background ? 'rgba(0, 0, 0, 0.75)' : 'transparent',
@@ -32,7 +34,6 @@ const styles = StyleSheet.create({
     zIndex: 5,
     padding: 15,
     borderRadius: 50,
-    position: 'absolute',
   },
   button: {
     color: 'white',

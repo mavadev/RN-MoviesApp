@@ -12,7 +12,7 @@ export class MediaMapper {
     result: MovieDBMediaResponse,
     type: Media['mediaType'] = 'movie',
   ): Media {
-    const mediaType = type ? type : result.media_type;
+    const mediaType = result.media_type || type;
 
     return {
       id: result.id,

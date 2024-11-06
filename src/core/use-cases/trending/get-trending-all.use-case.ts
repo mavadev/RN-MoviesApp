@@ -17,7 +17,7 @@ export const getTrendingAllUseCase = async (
         page: options?.page ?? 1,
       },
     });
-    return trendingList.results.map(MediaMapper.fromMediaResultToEntity);
+    return trendingList.results.map(media => MediaMapper.fromMediaResultToEntity(media));
   } catch (error) {
     console.log('ERROR EN TRENDING');
     throw new Error(`Error fetching all trending: ${error}`);
