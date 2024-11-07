@@ -6,7 +6,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function Navigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator barStyle={{zIndex: 2}}>
       <Tab.Screen name="Home" component={MainNavigator} />
       <Tab.Screen name="People" component={PeopleScreen} />
     </Tab.Navigator>

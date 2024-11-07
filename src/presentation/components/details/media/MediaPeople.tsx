@@ -1,5 +1,5 @@
 import {FlatList, Text, View} from 'react-native';
-import CastActor from '../../people/PeoplePerson';
+import ActorCard from './ActorCard';
 import type {Cast} from '../../../../core/entitites/media.entity';
 
 interface Props {
@@ -52,7 +52,7 @@ export default function MediaPeople({title, people, position = 'left'}: Props) {
           data={people}
           inverted={position == 'right'}
           keyExtractor={item => `${item.id}`}
-          renderItem={({item: actor}) => <CastActor actor={actor} />}
+          renderItem={({item: actor}) => <ActorCard actor={actor} />}
         />
       </View>
     </View>

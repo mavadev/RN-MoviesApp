@@ -1,18 +1,18 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import type {Cast} from '../../../core/entitites/media.entity';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {RootStackParams} from '../../navigation/MainNavigation';
+import {RootStackParams} from '../../../navigation/MainNavigation';
+import type {Cast} from '../../../../core/entitites/media.entity';
 
 interface Props {
   actor: Cast;
 }
 
-export default function CastActor({actor}: Props) {
+export default function ActorCard({actor}: Props) {
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
   return (
     <View style={{width: 100, marginHorizontal: 10}}>
-      <Pressable onPress={() => navigation.navigate('ActorScreen', {actorId: actor.id})}>
+      <Pressable onPress={() => navigation.navigate('PersonScreen', {personId: actor.id})}>
         <Image
           width={100}
           height={100}

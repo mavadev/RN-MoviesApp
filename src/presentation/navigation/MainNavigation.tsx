@@ -3,7 +3,7 @@ import {
   HomeScreen,
   MovieScreen,
   SerieScreen,
-  ActorScreen,
+  PersonScreen,
   CollectionScreen,
   SeasonScreen,
 } from '../screens';
@@ -14,7 +14,7 @@ export type RootStackParams = {
   SerieScreen: {mediaId: number};
   SeasonScreen: {serieId: number; seasonNumber: number};
 
-  ActorScreen: {actorId: number};
+  PersonScreen: {personId: number};
   CollectionScreen: {collectionId: number};
 };
 
@@ -34,7 +34,7 @@ export default function MainNavigator() {
       <Stack.Screen name="CollectionScreen" component={CollectionScreen} />
       <Stack.Screen name="SerieScreen" component={SerieScreen} />
       <Stack.Screen name="SeasonScreen" component={SeasonScreen} />
-      <Stack.Screen name="ActorScreen" component={ActorScreen} />
+      <Stack.Screen name="PersonScreen" component={PersonScreen} />
     </Stack.Navigator>
   );
 }

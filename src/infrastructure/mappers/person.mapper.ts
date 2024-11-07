@@ -1,7 +1,7 @@
 import type {PersonDetails} from '../../core/entitites/person.entity';
 import type {MovieDBPeopleDetailsResponse} from '../interfaces/person-db.responses';
 
-export class PeopleMapper {
+export class PersonMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
   static fromMovieDBPeopleDetailsToEntity(response: MovieDBPeopleDetailsResponse): PersonDetails {

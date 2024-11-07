@@ -9,35 +9,39 @@ import {
 } from '../../core/use-cases/person';
 import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
 
-interface ActorState {
-  actor: PersonDetails;
+interface PersonState {
+  person: PersonDetails;
   movies: Media[];
   series: Media[];
 }
 
-export const usePerson = (actorID: number) => {
+export const usePerson = (personID: number) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [actorState, setActorState] = useState<ActorState>();
+  const [personState, setPersonState] = useState<PersonState>();
 
   useEffect(() => {
-    loadActor();
-  }, [actorID]);
+    loadPerson();
+  }, [personID]);
 
-  const loadActor = async () => {
+  const loadPerson = async () => {
     !isLoading && setIsLoading(true);
 
-    const actorPromise = getPeopleByIdUseCase(movieDBFetcher, actorID);
-    const moviesPromise = getPeopleMoviesUseCase(movieDBFetcher, actorID);
-    const seriesPromise = getPeopleSeriesUseCase(movieDBFetcher, actorID);
+    const personPromise = getPeopleByIdUseCase(movieDBFetcher, personID);
+    const moviesPromise = getPeopleMoviesUseCase(movieDBFetcher, personID);
+    const seriesPromise = getPeopleSeriesUseCase(movieDBFetcher, personID);
 
-    const [actor, movies, series] = await Promise.all([actorPromise, moviesPromise, seriesPromise]);
+    const [person, movies, series] = await Promise.all([
+      personPromise,
+      moviesPromise,
+      seriesPromise,
+    ]);
 
-    setActorState({actor, movies, series});
+    setPersonState({person, movies, series});
     setIsLoading(false);
   };
 
   return {
-    ...actorState,
+    ...personState,
     isLoading,
   };
 };

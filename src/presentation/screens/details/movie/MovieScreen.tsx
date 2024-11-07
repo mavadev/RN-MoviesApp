@@ -4,7 +4,7 @@ import type {RootStackParams} from '../../../navigation/MainNavigation';
 
 import {useMovie} from '../../../hooks/useMovie';
 import {Loader} from '../../../components/ui';
-import {Carousel} from '../../../components/carousels';
+import {CarouselSimple} from '../../../components/carousels';
 import {
   MediaHeader,
   MediaDetails,
@@ -38,7 +38,7 @@ export default function MovieScreen({route}: Props) {
       {/* Colección */}
       <MovieCollection collection={movie?.collection!} />
       {/* Similares */}
-      <Carousel mediaList={similar!} title="Similares" />
+      <CarouselSimple mediaList={similar!} title="Similares" />
     </ScrollView>
   );
 }

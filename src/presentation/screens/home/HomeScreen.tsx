@@ -3,7 +3,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {useContent, ContentPaths} from '../../hooks/useContent';
 import {Loader} from '../../components/ui';
-import {Carousel, CarouselHorizontal} from '../../components/carousels';
+import {CarouselSimple, CarouselHorizontal} from '../../components/carousels';
 
 export default function HomeScreen() {
   const {top} = useSafeAreaInsets();
@@ -18,14 +18,14 @@ export default function HomeScreen() {
         <CarouselHorizontal mediaList={trending} />
 
         {/* Películas Populares */}
-        <Carousel
+        <CarouselSimple
           mediaList={moviesPopular}
           title="Películas Populares"
           loadMovies={page => updateContent(ContentPaths.MoviesPopular, page)}
         />
 
         {/* Series Populares */}
-        <Carousel
+        <CarouselSimple
           mediaList={seriesPopular}
           title="Series Populares"
           loadMovies={page => updateContent(ContentPaths.TvSeriesPopular, page)}

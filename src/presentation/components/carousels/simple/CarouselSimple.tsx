@@ -8,10 +8,10 @@ import CarouselItem from './Carousel-Item';
 import {RootStackParams} from '../../../navigation/MainNavigation';
 
 interface Props {
-  title?: string;
   mediaList: Media[];
-  loadMovies?: (page: number) => void;
+  title?: string;
   serieId?: number;
+  loadMovies?: (page: number) => void;
 }
 
 export default function CarouselSimple({mediaList, title, loadMovies, serieId}: Props) {
@@ -33,7 +33,6 @@ export default function CarouselSimple({mediaList, title, loadMovies, serieId}: 
   return (
     <View>
       {title && <Text style={styles.carouselTitle}>{title}</Text>}
-
       <FlatList
         horizontal
         data={mediaList}

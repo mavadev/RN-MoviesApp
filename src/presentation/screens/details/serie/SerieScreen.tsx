@@ -4,7 +4,7 @@ import type {RootStackParams} from '../../../navigation/MainNavigation';
 
 import {useSerie} from '../../../hooks/useSerie';
 import {Loader} from '../../../components/ui';
-import {Carousel} from '../../../components/carousels';
+import {CarouselSimple} from '../../../components/carousels';
 import {
   MediaHeader,
   MediaDetails,
@@ -35,9 +35,9 @@ export default function SerieScreen({route}: Props) {
       {/* Compañias */}
       <MediaCompanies companies={serie?.companies!} />
       {/* Seasons */}
-      <Carousel title="Temporadas" mediaList={serie?.seasons!} serieId={serie?.id} />
+      <CarouselSimple title="Temporadas" mediaList={serie?.seasons!} serieId={serie?.id} />
       {/* Similares */}
-      <Carousel title="Similares" mediaList={similar!} />
+      <CarouselSimple title="Similares" mediaList={similar!} />
     </ScrollView>
   );
 }
