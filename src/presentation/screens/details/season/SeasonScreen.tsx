@@ -1,10 +1,10 @@
 import {StackScreenProps} from '@react-navigation/stack';
-import {ScrollView, StatusBar, View} from 'react-native';
+import {FlatList, StatusBar, View} from 'react-native';
 import type {RootStackParams} from '../../../navigation/MainNavigation';
 
 import useSeason from '../../../hooks/useSeason';
 import {ButtonBack, Loader} from '../../../components/ui';
-import {SeasonContent, SeasonEpisodes} from '../../../components/details/season';
+import {SeasonHeader, SeasonEpisode} from '../../../components/details/season';
 
 interface Props extends StackScreenProps<RootStackParams, 'SeasonScreen'> {}
 
@@ -15,17 +15,25 @@ export default function SeasonScreen({route}: Props) {
   if (isLoading) return <Loader />;
 
   return (
-    <ScrollView>
+    <View style={{flex: 1}}>
       <StatusBar translucent={false} backgroundColor="black" />
       <View style={{backgroundColor: 'black'}}>
         <ButtonBack position="relative" />
       </View>
-      <SeasonContent
-        name={season?.name!}
-        seasonNum={season?.seasonNumber!}
-        description={season?.description!}
+      <FlatList
+        data={season?.episodes}
+        contentContainerStyle={{rowGap: 15}}
+        keyExtractor={item => item.id.toString()}
+        ListHeaderComponent={() => (
+          <SeasonHeader
+            name={season?.name!}
+            seasonNum={season?.seasonNumber!}
+            description={season?.description!}
+            cantEpisodes={season?.episodes.length!}
+          />
+        )}
+        renderItem={({item: episode}) => <SeasonEpisode episode={episode} />}
       />
-      <SeasonEpisodes episodes={season?.episodes!} />
-    </ScrollView>
+    </View>
   );
 }

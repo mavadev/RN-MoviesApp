@@ -2,10 +2,10 @@ import {FlatList} from 'react-native-gesture-handler';
 import {StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
-import type {Media} from '../../../../core/entitites/media.entity';
 import useCarousel from '../../../hooks/useCarousel';
 import CarouselItem from './Carousel-Item';
-import {RootStackParams} from '../../../navigation/MainNavigation';
+import type {Media} from '../../../../core/entitites/media.entity';
+import type {RootStackParams} from '../../../navigation/MainNavigation';
 
 interface Props {
   mediaList: Media[];
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function CarouselSimple({mediaList, title, loadMovies, serieId}: Props) {
-  const {onScroll} = useCarousel(mediaList, loadMovies);
+  const {updateContent} = useCarousel(mediaList, loadMovies);
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
   const handleItemPress = (media: Media, seasonNumber: number) => {
@@ -36,8 +36,9 @@ export default function CarouselSimple({mediaList, title, loadMovies, serieId}: 
       <FlatList
         horizontal
         data={mediaList}
-        onScroll={onScroll}
         style={styles.carousel}
+        onEndReached={updateContent}
+        onEndReachedThreshold={0.5}
         keyExtractor={(item, index) => `${item.id}-${index}`}
         renderItem={({item: media, index}) => (
           <CarouselItem

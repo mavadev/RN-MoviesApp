@@ -19,7 +19,7 @@ export default function CarouselHorizontalItem({media}: Props) {
           mediaId: media.id,
         })
       }>
-      <Image source={{uri: media.backdrop}} style={styles.backdrop} />
+      <Image source={{uri: media.backdrop!}} style={styles.backdrop} />
       <LinearGradient
         start={{x: 0.5, y: 0.5}}
         colors={['transparent', 'black']}
@@ -29,7 +29,7 @@ export default function CarouselHorizontalItem({media}: Props) {
           padding: 20,
           alignItems: 'center',
         }}>
-        <Image source={{uri: media.poster}} style={{height: '100%', aspectRatio: 11 / 17}} />
+        <Image source={{uri: media.poster!}} style={{height: '100%', aspectRatio: 11 / 17}} />
       </LinearGradient>
     </Pressable>
   );

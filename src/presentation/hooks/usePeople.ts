@@ -18,7 +18,6 @@ export const usePeople = (page: number = 1) => {
     try {
       const peoplePopular = await getPeoplePopularUseCase(movieDBFetcher, {page});
 
-      console.log({peoplePopular});
       setPopular(prevState => ({
         page: peoplePopular.page,
         persons: [...prevState.persons, ...peoplePopular.persons],

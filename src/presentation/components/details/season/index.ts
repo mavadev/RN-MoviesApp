@@ -1,2 +1,2 @@
-export {default as SeasonContent} from './SeasonContent';
-export {default as SeasonEpisodes} from './SeasonEpisodes';
+export {default as SeasonHeader} from './SeasonHeader';
+export {default as SeasonEpisode} from './SeasonEpisode';

@@ -40,7 +40,7 @@ export const useContent = () => {
     setIsLoading(false);
   };
 
-  const updateContent = async (category: ContentPaths, page: number) => {
+  const loadContent = async (category: ContentPaths, page: number) => {
     switch (category) {
       // Trending
       case ContentPaths.Trending:
@@ -53,7 +53,7 @@ export const useContent = () => {
         setMoviesPopular(prev => [...prev, ...newMovies]);
         return;
       case ContentPaths.TvSeriesPopular:
-        const newSeries = await getTvSeriesUseCase(movieDBFetcher, ContentPaths.TvSeriesPopular);
+        const newSeries = await getTvSeriesUseCase(movieDBFetcher, category, {page});
         setSeriesPopular(prev => [...prev, ...newSeries]);
         return;
       default:
@@ -62,11 +62,10 @@ export const useContent = () => {
   };
 
   return {
+    isLoading,
     trending,
     moviesPopular,
     seriesPopular,
-    isLoading,
-
-    updateContent,
+    loadContent,
   };
 };

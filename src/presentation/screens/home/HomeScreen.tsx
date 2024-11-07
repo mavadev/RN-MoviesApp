@@ -7,7 +7,7 @@ import {CarouselSimple, CarouselHorizontal} from '../../components/carousels';
 
 export default function HomeScreen() {
   const {top} = useSafeAreaInsets();
-  const {isLoading, trending, moviesPopular, seriesPopular, updateContent} = useContent();
+  const {isLoading, trending, moviesPopular, seriesPopular, loadContent} = useContent();
 
   if (isLoading) return <Loader />;
 
@@ -21,14 +21,14 @@ export default function HomeScreen() {
         <CarouselSimple
           mediaList={moviesPopular}
           title="Películas Populares"
-          loadMovies={page => updateContent(ContentPaths.MoviesPopular, page)}
+          loadMovies={page => loadContent(ContentPaths.MoviesPopular, page)}
         />
 
         {/* Series Populares */}
         <CarouselSimple
           mediaList={seriesPopular}
           title="Series Populares"
-          loadMovies={page => updateContent(ContentPaths.TvSeriesPopular, page)}
+          loadMovies={page => loadContent(ContentPaths.TvSeriesPopular, page)}
         />
       </View>
     </ScrollView>
