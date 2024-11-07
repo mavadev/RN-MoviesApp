@@ -1,12 +1,12 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import {FlatList, StatusBar, View} from 'react-native';
-import type {RootStackParams} from '../../../navigation/MainNavigation';
+import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
 
 import useSeason from '../../../hooks/useSeason';
 import {ButtonBack, Loader} from '../../../components/ui';
 import {SeasonHeader, SeasonEpisode} from '../../../components/details/season';
 
-interface Props extends StackScreenProps<RootStackParams, 'SeasonScreen'> {}
+interface Props extends StackScreenProps<BaseNavigatorParams, 'SeasonScreen'> {}
 
 export default function SeasonScreen({route}: Props) {
   const {serieId, seasonNumber} = route.params;

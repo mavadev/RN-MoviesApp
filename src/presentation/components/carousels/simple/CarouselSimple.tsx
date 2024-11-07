@@ -5,7 +5,7 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 import useCarousel from '../../../hooks/useCarousel';
 import CarouselItem from './Carousel-Item';
 import type {Media} from '../../../../core/entitites/media.entity';
-import type {RootStackParams} from '../../../navigation/MainNavigation';
+import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
 
 interface Props {
   mediaList: Media[];
@@ -16,13 +16,13 @@ interface Props {
 
 export default function CarouselSimple({mediaList, title, loadMovies, serieId}: Props) {
   const {updateContent} = useCarousel(mediaList, loadMovies);
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+  const navigation = useNavigation<NavigationProp<BaseNavigatorParams>>();
 
   const handleItemPress = (media: Media, seasonNumber: number) => {
     if (media.mediaType == 'movie') {
-      navigation.navigate('MovieScreen', {mediaId: media.id});
+      navigation.navigate('MovieScreen', {movieId: media.id});
     } else if (media.mediaType == 'tv') {
-      navigation.navigate('SerieScreen', {mediaId: media.id});
+      navigation.navigate('SerieScreen', {serieId: media.id});
     } else if (serieId) {
       navigation.navigate('SeasonScreen', {serieId, seasonNumber});
     }

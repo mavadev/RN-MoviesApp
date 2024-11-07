@@ -1,6 +1,6 @@
 import {ScrollView, StatusBar} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
-import type {RootStackParams} from '../../../navigation/MainNavigation';
+import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
 
 import {useSerie} from '../../../hooks/useSerie';
 import {Loader} from '../../../components/ui';
@@ -13,11 +13,11 @@ import {
   MediaCompanies,
 } from '../../../components/details';
 
-interface Props extends StackScreenProps<RootStackParams, 'SerieScreen'> {}
+interface Props extends StackScreenProps<BaseNavigatorParams, 'SerieScreen'> {}
 
 export default function SerieScreen({route}: Props) {
-  const {mediaId} = route.params;
-  const {isLoading, serie, images, cast, similar} = useSerie(mediaId);
+  const {serieId} = route.params;
+  const {isLoading, serie, images, cast, similar} = useSerie(serieId);
 
   if (isLoading) return <Loader />;
 

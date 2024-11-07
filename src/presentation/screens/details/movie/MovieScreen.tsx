@@ -1,6 +1,6 @@
 import {ScrollView, StatusBar, Text} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
-import type {RootStackParams} from '../../../navigation/MainNavigation';
+import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
 
 import {useMovie} from '../../../hooks/useMovie';
 import {Loader} from '../../../components/ui';
@@ -14,11 +14,12 @@ import {
   MediaCompanies,
 } from '../../../components/details/';
 
-interface Props extends StackScreenProps<RootStackParams, 'MovieScreen'> {}
+interface Props extends StackScreenProps<BaseNavigatorParams, 'MovieScreen'> {}
 
 export default function MovieScreen({route}: Props) {
-  const {mediaId} = route.params;
-  const {movie, images, cast, similar, isLoading} = useMovie(mediaId);
+  const {movieId} = route.params;
+  console.log({movieId});
+  const {movie, images, cast, similar, isLoading} = useMovie(movieId);
 
   if (isLoading) return <Loader />;
 

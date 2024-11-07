@@ -1,6 +1,6 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import type {RootStackParams} from '../../navigation/MainNavigation';
+import type {BaseNavigatorParams} from '../../navigation/BaseNavigator';
 import {Person} from '../../../core/entitites/people.entity';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function PeopleItem({person}: Props) {
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+  const navigation = useNavigation<NavigationProp<BaseNavigatorParams>>();
 
   return (
     <View key={person.id} style={{flex: 1}}>

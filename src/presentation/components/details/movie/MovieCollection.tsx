@@ -1,6 +1,6 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import type {RootStackParams} from '../../../navigation/MainNavigation';
+import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
 import type {Collection} from '../../../../core/entitites/movie.entity';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function MovieCollection({collection}: Props) {
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+  const navigation = useNavigation<NavigationProp<BaseNavigatorParams>>();
 
   if (!collection) return <></>;
   return (

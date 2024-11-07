@@ -1,26 +1,20 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {
-  HomeScreen,
-  MovieScreen,
-  SerieScreen,
-  PersonScreen,
-  CollectionScreen,
-  SeasonScreen,
-} from '../screens';
+import {MovieScreen, SerieScreen, PersonScreen, CollectionScreen, SeasonScreen} from '../screens';
+import DiscoverNavigator from './DiscoverNavigator';
 
-export type RootStackParams = {
-  Content: undefined;
-  MovieScreen: {mediaId: number};
-  SerieScreen: {mediaId: number};
+export type BaseNavigatorParams = {
+  DiscoverNavigator: undefined;
+  MovieScreen: {movieId: number};
+  SerieScreen: {serieId: number};
   SeasonScreen: {serieId: number; seasonNumber: number};
 
   PersonScreen: {personId: number};
   CollectionScreen: {collectionId: number};
 };
 
-const Stack = createStackNavigator<RootStackParams>();
+const Stack = createStackNavigator<BaseNavigatorParams>();
 
-export default function MainNavigator() {
+export default function BaseNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -29,12 +23,12 @@ export default function MainNavigator() {
           backgroundColor: 'white',
         },
       }}>
-      <Stack.Screen name="Content" component={HomeScreen} />
+      <Stack.Screen name="DiscoverNavigator" component={DiscoverNavigator} />
       <Stack.Screen name="MovieScreen" component={MovieScreen} />
-      <Stack.Screen name="CollectionScreen" component={CollectionScreen} />
       <Stack.Screen name="SerieScreen" component={SerieScreen} />
       <Stack.Screen name="SeasonScreen" component={SeasonScreen} />
       <Stack.Screen name="PersonScreen" component={PersonScreen} />
+      <Stack.Screen name="CollectionScreen" component={CollectionScreen} />
     </Stack.Navigator>
   );
 }

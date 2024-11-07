@@ -1,24 +1,15 @@
 import LinearGradient from 'react-native-linear-gradient';
 import {Image, Pressable, StyleSheet} from 'react-native';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
-import type {RootStackParams} from '../../../navigation/MainNavigation';
 import type {Media} from '../../../../core/entitites/media.entity';
 
 interface Props {
   media: Media;
+  onItemPress: () => void;
 }
 
-export default function CarouselHorizontalItem({media}: Props) {
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
-
+export default function CarouselHorizontalItem({media, onItemPress}: Props) {
   return (
-    <Pressable
-      style={styles.carouselItem}
-      onPress={() =>
-        navigation.navigate(media.mediaType == 'movie' ? 'MovieScreen' : 'SerieScreen', {
-          mediaId: media.id,
-        })
-      }>
+    <Pressable style={styles.carouselItem} onPress={onItemPress}>
       <Image source={{uri: media.backdrop!}} style={styles.backdrop} />
       <LinearGradient
         start={{x: 0.5, y: 0.5}}

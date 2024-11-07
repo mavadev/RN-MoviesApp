@@ -1,6 +1,6 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {RootStackParams} from '../../../navigation/MainNavigation';
+import {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
 import type {Cast} from '../../../../core/entitites/media.entity';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ActorCard({actor}: Props) {
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+  const navigation = useNavigation<NavigationProp<BaseNavigatorParams>>();
 
   return (
     <View style={{width: 100, marginHorizontal: 10}}>
