@@ -1,5 +1,5 @@
 import {FlatList, Image, StyleSheet} from 'react-native';
-import type {MediaImage} from '../../../../core/entitites/media.entity';
+import type {MediaImage} from '@entitites/media.entity';
 
 interface Props {
   captures: MediaImage[];

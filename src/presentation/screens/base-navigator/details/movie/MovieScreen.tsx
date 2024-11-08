@@ -1,10 +1,10 @@
-import {ScrollView, StatusBar, Text} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
-import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
+import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
-import {useMovie} from '../../../hooks/useMovie';
-import {Loader} from '../../../components/ui';
-import {CarouselSimple} from '../../../components/carousels';
+import {useMovie} from '@hooks/useMovie';
+import {Loader} from '@components/ui';
+import {CarouselSimple} from '@components/carousels';
 import {
   MediaHeader,
   MediaDetails,
@@ -12,7 +12,7 @@ import {
   MediaPeople,
   MovieCollection,
   MediaCompanies,
-} from '../../../components/details/';
+} from '@components/details/';
 
 interface Props extends StackScreenProps<BaseNavigatorParams, 'MovieScreen'> {}
 

@@ -1,10 +1,10 @@
 import {Dimensions, FlatList, StyleSheet, View} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
-import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
+import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
-import useCollection from '../../../hooks/useCollection';
-import {ButtonBack, Loader} from '../../../components/ui';
-import CarouselHorizontalItem from '../../../components/carousels/horizontal/CarouselHorizontal-Item';
+import useCollection from '@hooks/useCollection';
+import {ButtonBack, Loader} from '@components/ui';
+import CarouselHorizontalItem from '@components/carousels/horizontal/CarouselHorizontal-Item';
 
 interface Props extends StackScreenProps<BaseNavigatorParams, 'CollectionScreen'> {}
 

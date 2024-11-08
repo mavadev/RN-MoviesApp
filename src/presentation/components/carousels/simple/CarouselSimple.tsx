@@ -2,10 +2,10 @@ import {FlatList} from 'react-native-gesture-handler';
 import {StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
-import useCarousel from '../../../hooks/useCarousel';
 import CarouselItem from './Carousel-Item';
-import type {Media} from '../../../../core/entitites/media.entity';
-import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
+import useCarousel from '@hooks/useCarousel';
+import type {Media} from '@entitites/media.entity';
+import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
 interface Props {
   mediaList: Media[];

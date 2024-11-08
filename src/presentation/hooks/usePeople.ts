@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import {getPeoplePopularUseCase} from '../../core/use-cases/people/get-people-popular.use-case';
-import {PeoplePopular} from '../../core/entitites/people.entity';
-import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
+import {movieDBFetcher} from '@adapters/movieDB.adapter';
+import type {PeoplePopular} from '@entitites/people.entity';
+import {getPeoplePopularUseCase} from '@use-cases/people/get-people-popular.use-case';
 
 export const usePeople = (page: number = 1) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
-import {SeasonDetails} from '../../../../core/entitites/season.entity';
-import HiddenText from '../HiddenText';
+import {SeasonDetails} from '@entitites/season.entity';
+import {HiddenText} from '@components/details';
 
 interface Props {
   name: SeasonDetails['name'];

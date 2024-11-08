@@ -1,4 +1,4 @@
-import {AxiosAdaptter} from './http/axios.adapter';
+import {AxiosAdaptter} from '@adapters/http/axios.adapter';
 
 export const movieDBFetcher = new AxiosAdaptter({
   baseUrl: 'https://api.themoviedb.org/3',

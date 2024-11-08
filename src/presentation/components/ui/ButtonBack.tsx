@@ -1,5 +1,5 @@
+import {Pressable, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {Pressable, StyleSheet, Text} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 

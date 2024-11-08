@@ -1,9 +1,9 @@
-import type {Cast, Media, MediaImage} from '../../core/entitites/media.entity';
+import type {Cast, Media, MediaImage} from '@entitites/media.entity';
 import type {
   MovieDBImage,
   MovieDBMediaCast,
   MovieDBMediaResponse,
-} from '../interfaces/media-db.responses';
+} from '@interfaces/media-db.responses';
 
 export class MediaMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';

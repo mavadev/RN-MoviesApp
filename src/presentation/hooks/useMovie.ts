@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
-import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import type {MovieDetails} from '../../core/entitites/movie.entity';
-import type {Media, Cast, MediaImage} from '../../core/entitites/media.entity';
+import {movieDBFetcher} from '@adapters/movieDB.adapter';
+import type {MovieDetails} from '@entitites/movie.entity';
+import type {Media, Cast, MediaImage} from '@entitites/media.entity';
 
+import {getMovieByIdUseCase} from '@use-cases/movie/get-movie-by-id.use-case';
 import {
   getMediaCreditsUseCase,
   getMediaImagesUseCase,
   getSimilarMediaUseCase,
-} from '../../core/use-cases/media';
-import {getMovieByIdUseCase} from '../../core/use-cases/movie/get-movie-by-id.use-case';
+} from '@use-cases/media';
 
 interface Images {
   logo: MediaImage | null;

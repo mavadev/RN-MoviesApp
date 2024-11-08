@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import HiddenText from '../HiddenText';
+import {HiddenText} from '@components/details';
 
 interface Props {
   name?: string;

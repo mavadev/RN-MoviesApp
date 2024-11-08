@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
-import type {Episode} from '../../../../core/entitites/season.entity';
-import HiddenText from '../HiddenText';
+import type {Episode} from '@entitites/season.entity';
+import {HiddenText} from '@components/details';
 
 interface Props {
   episode: Episode;

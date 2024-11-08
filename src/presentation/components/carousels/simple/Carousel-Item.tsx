@@ -1,6 +1,6 @@
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import {View, Image, Pressable, Text, StyleSheet} from 'react-native';
-import type {Media} from '../../../../core/entitites/media.entity';
+import type {Media} from '@entitites/media.entity';
 
 interface Props {
   firstMovie?: boolean;

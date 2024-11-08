@@ -1,7 +1,7 @@
-import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {SeasonMapper} from '../../../infrastructure/mappers/season.mapper';
-import type {MovieDBSeasonDetailsResponse} from '../../../infrastructure/interfaces/season-db.responses';
-import type {SeasonDetails} from '../../entitites/season.entity';
+import {HttpAdapter} from '@adapters/http/http.adapter';
+import {SeasonMapper} from '@mappers/season.mapper';
+import type {MovieDBSeasonDetailsResponse} from '@interfaces/season-db.responses';
+import type {SeasonDetails} from '@entitites/season.entity';
 
 export const getSeasonByIdUseCase = async (
   fetcher: HttpAdapter,

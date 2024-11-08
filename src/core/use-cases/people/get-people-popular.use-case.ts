@@ -1,7 +1,7 @@
-import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {PeopleMapper} from '../../../infrastructure/mappers/people.mapper';
-import type {MovieDBPeoplePopularResponse} from '../../../infrastructure/interfaces/people-db.responses';
-import type {PeoplePopular} from '../../entitites/people.entity';
+import {HttpAdapter} from '@adapters/http/http.adapter';
+import {PeopleMapper} from '@mappers/people.mapper';
+import type {MovieDBPeoplePopularResponse} from '@interfaces/people-db.responses';
+import type {PeoplePopular} from '@entitites/people.entity';
 
 interface Options {
   page?: number;

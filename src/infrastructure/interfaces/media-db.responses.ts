@@ -1,5 +1,5 @@
-import {MovieDBMovieResponse} from './movie-db.responses';
-import {MovieDBTvSerieResponse} from './tv_serie-db.responses';
+import type {MovieDBMovieResponse} from './movie-db.responses';
+import type {MovieDBTvSerieResponse} from './tv_serie-db.responses';
 
 // Media List Response
 export interface MovieDBMediaListResponse {

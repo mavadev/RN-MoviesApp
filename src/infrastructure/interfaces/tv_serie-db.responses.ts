@@ -1,4 +1,4 @@
-import {
+import type {
   MovieDBMediaResponse,
   MovieDBMediaDetailsResponse,
   ProductionCompany,

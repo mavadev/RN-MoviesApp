@@ -1,7 +1,7 @@
-import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {MovieMapper} from '../../../infrastructure/mappers/movie.mapper';
-import type {MovieDBMovieDetailsResponse} from '../../../infrastructure/interfaces/movie-db.responses';
-import type {MovieDetails} from '../../entitites/movie.entity';
+import {HttpAdapter} from '@adapters/http/http.adapter';
+import {MovieMapper} from '@mappers/movie.mapper';
+import type {MovieDBMovieDetailsResponse} from '@interfaces/movie-db.responses';
+import type {MovieDetails} from '@entitites/movie.entity';
 
 export const getMovieByIdUseCase = async (
   fetcher: HttpAdapter,

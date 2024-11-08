@@ -1,10 +1,10 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import {FlatList, StatusBar, View} from 'react-native';
-import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
+import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
-import useSeason from '../../../hooks/useSeason';
-import {ButtonBack, Loader} from '../../../components/ui';
-import {SeasonHeader, SeasonEpisode} from '../../../components/details/season';
+import useSeason from '@hooks/useSeason';
+import {ButtonBack, Loader} from '@components/ui';
+import {SeasonHeader, SeasonEpisode} from '@components/details/season';
 
 interface Props extends StackScreenProps<BaseNavigatorParams, 'SeasonScreen'> {}
 

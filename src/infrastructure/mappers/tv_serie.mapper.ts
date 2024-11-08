@@ -1,5 +1,5 @@
-import type {MovieDBTvSerieDetailsResponse} from '../interfaces/tv_serie-db.responses';
-import type {TvSerieDetails} from '../../core/entitites/tv_serie.entity';
+import type {MovieDBTvSerieDetailsResponse} from '@interfaces/tv_serie-db.responses';
+import type {TvSerieDetails} from '@entitites/tv_serie.entity';
 import {MediaMapper} from './media.mapper';
 
 export class TvSerieMapper {

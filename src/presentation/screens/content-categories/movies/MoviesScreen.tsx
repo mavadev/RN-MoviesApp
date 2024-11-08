@@ -1,11 +1,11 @@
 import {ScrollView, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {useContent, ContentPaths} from '../../hooks/useContent';
-import {Loader} from '../../components/ui';
-import {CarouselSimple, CarouselHorizontal} from '../../components/carousels';
+import {useContent, ContentPaths} from '@hooks/useContent';
+import {Loader} from '@components/ui';
+import {CarouselSimple, CarouselHorizontal} from '@components/carousels';
 
-export default function HomeScreen() {
+export default function MoviesScreen() {
   const {top} = useSafeAreaInsets();
   const {isLoading, trending, moviesPopular, seriesPopular, loadContent} = useContent();
 

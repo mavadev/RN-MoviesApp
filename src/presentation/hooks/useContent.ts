@@ -1,9 +1,11 @@
 import {useEffect, useState} from 'react';
-import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import {getTrendingAllUseCase} from '../../core/use-cases/trending/get-trending-all.use-case';
-import {getMoviesUseCase} from '../../core/use-cases';
-import {getTvSeriesUseCase} from '../../core/use-cases/tv_series/get-series.use-case';
-import type {Media} from '../../core/entitites/media.entity';
+import {movieDBFetcher} from '@adapters/movieDB.adapter';
+
+import {getTrendingAllUseCase} from '@use-cases/trending/get-trending-all.use-case';
+import {getMoviesUseCase} from '@use-cases/movies/get-movies.use-case';
+import {getTvSeriesUseCase} from '@use-cases/tv_series/get-series.use-case';
+
+import type {Media} from '@entitites/media.entity';
 
 export enum ContentPaths {
   Trending = '/trending/all/week',

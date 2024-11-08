@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import type {Media} from '../../core/entitites/media.entity';
+import type {Media} from '@entitites/media.entity';
 
 export default function useCarousel(mediaList: Media[], loadMovies?: (page: number) => void) {
   const isGettingMovies = useRef(false);

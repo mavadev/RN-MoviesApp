@@ -1,7 +1,7 @@
 import {Image, StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import type {MediaImage} from '../../../../core/entitites/media.entity';
-import {ButtonBack} from '../../ui';
+import {ButtonBack} from '@components/ui';
+import type {MediaImage} from '@entitites/media.entity';
 
 interface Props {
   backdrop: string;

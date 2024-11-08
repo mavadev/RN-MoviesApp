@@ -1,6 +1,12 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {MovieScreen, SerieScreen, PersonScreen, CollectionScreen, SeasonScreen} from '../screens';
 import DiscoverNavigator from './DiscoverNavigator';
+import {
+  MovieScreen,
+  SerieScreen,
+  PersonScreen,
+  CollectionScreen,
+  SeasonScreen,
+} from '@screens/base-navigator';
 
 export type BaseNavigatorParams = {
   DiscoverNavigator: undefined;

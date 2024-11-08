@@ -1,6 +1,6 @@
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import {Image, StyleSheet, View} from 'react-native';
-import {ButtonBack} from '../../ui';
+import {ButtonBack} from '@components/ui';
 
 // 0	Not set / not specified
 // 1	Female

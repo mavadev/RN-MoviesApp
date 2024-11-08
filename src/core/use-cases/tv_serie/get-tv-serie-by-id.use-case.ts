@@ -1,7 +1,7 @@
-import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
-import {TvSerieMapper} from '../../../infrastructure/mappers/tv_serie.mapper';
-import type {MovieDBTvSerieDetailsResponse} from '../../../infrastructure/interfaces/tv_serie-db.responses';
-import type {TvSerieDetails} from '../../entitites/tv_serie.entity';
+import {HttpAdapter} from '@adapters/http/http.adapter';
+import {TvSerieMapper} from '@mappers/tv_serie.mapper';
+import type {MovieDBTvSerieDetailsResponse} from '@interfaces/tv_serie-db.responses';
+import type {TvSerieDetails} from '@entitites/tv_serie.entity';
 
 export const getTvSerieByIdUseCase = async (
   fetcher: HttpAdapter,

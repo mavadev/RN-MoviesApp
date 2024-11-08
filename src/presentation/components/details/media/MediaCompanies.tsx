@@ -1,5 +1,5 @@
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
-import {Company} from '../../../../core/entitites/media.entity';
+import {Company} from '@entitites/media.entity';
 
 interface Props {
   companies: Company[];

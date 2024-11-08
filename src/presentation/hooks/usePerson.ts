@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
-import type {PersonDetails} from '../../core/entitites/person.entity';
-import type {Media} from '../../core/entitites/media.entity';
+import {movieDBFetcher} from '@adapters/movieDB.adapter';
+import type {Media} from '@entitites/media.entity';
+import type {PersonDetails} from '@entitites/person.entity';
 
 import {
   getPeopleByIdUseCase,
   getPeopleMoviesUseCase,
   getPeopleSeriesUseCase,
-} from '../../core/use-cases/person';
-import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
+} from '@use-cases/person';
 
 interface PersonState {
   person: PersonDetails;

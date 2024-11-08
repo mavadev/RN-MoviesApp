@@ -1,6 +1,6 @@
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import PeopleScreen from '../screens/people/PeopleScreen';
-import ContentCategories from './ContentCategories';
+import PeopleScreen from '@screens/discover-navigator/people/PeopleScreen';
+import ContentCategories from '@navigation/ContentCategories';
 
 export type DiscoverNavigatorParams = {
   ContentCategories: undefined;

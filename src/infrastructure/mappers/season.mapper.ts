@@ -1,5 +1,5 @@
-import {SeasonDetails} from '../../core/entitites/season.entity';
-import {MovieDBSeasonDetailsResponse} from '../interfaces/season-db.responses';
+import {SeasonDetails} from '@entitites/season.entity';
+import {MovieDBSeasonDetailsResponse} from '@interfaces/season-db.responses';
 
 export class SeasonMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';

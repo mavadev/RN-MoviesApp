@@ -1,17 +1,17 @@
 import {ScrollView, StatusBar} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
-import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
+import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
-import {useSerie} from '../../../hooks/useSerie';
-import {Loader} from '../../../components/ui';
-import {CarouselSimple} from '../../../components/carousels';
+import {useSerie} from '@hooks/useSerie';
+import {Loader} from '@components/ui';
+import {CarouselSimple} from '@components/carousels';
 import {
   MediaHeader,
   MediaDetails,
   MediaCaptures,
   MediaPeople,
   MediaCompanies,
-} from '../../../components/details';
+} from '@components/details';
 
 interface Props extends StackScreenProps<BaseNavigatorParams, 'SerieScreen'> {}
 

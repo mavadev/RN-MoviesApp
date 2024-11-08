@@ -1,4 +1,4 @@
-import {MovieDBMediaDetailsResponse, MovieDBMediaResponse} from './media-db.responses';
+import type {MovieDBMediaDetailsResponse, MovieDBMediaResponse} from './media-db.responses';
 
 // Movies
 export interface MovieDBMoviesResponse {

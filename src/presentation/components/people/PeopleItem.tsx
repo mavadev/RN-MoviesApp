@@ -1,7 +1,7 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import type {BaseNavigatorParams} from '../../navigation/BaseNavigator';
-import {Person} from '../../../core/entitites/people.entity';
+import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
+import {Person} from '@entitites/people.entity';
 
 interface Props {
   person: Person;

@@ -1,9 +1,9 @@
 import {useCallback, useState} from 'react';
 import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 
-import {usePeople} from '../../hooks/usePeople';
-import {ButtonBack} from '../../components/ui';
-import {PeopleHeader, PeopleItem} from '../../components/people';
+import {usePeople} from '@hooks/usePeople';
+import {ButtonBack} from '@components/ui';
+import {PeopleHeader, PeopleItem} from '@components/people';
 
 export default function PeopleScreen() {
   const [page, setPage] = useState(1);

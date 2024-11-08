@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import type {CollectionDetails} from '../../core/entitites/collection.entity';
-import {getCollectionByIdUseCase} from '../../core/use-cases/collection/get-collection-by-id.use-case';
+import {movieDBFetcher} from '@adapters/movieDB.adapter';
+import type {CollectionDetails} from '@entitites/collection.entity';
+import {getCollectionByIdUseCase} from '@use-cases/collection/get-collection-by-id.use-case';
 
 export default function useCollection(collectionID: number) {
   const [collection, setCollection] = useState<CollectionDetails>();

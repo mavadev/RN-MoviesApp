@@ -1,5 +1,5 @@
-import type {PersonDetails} from '../../core/entitites/person.entity';
-import type {MovieDBPeopleDetailsResponse} from '../interfaces/person-db.responses';
+import type {PersonDetails} from '@entitites/person.entity';
+import type {MovieDBPeopleDetailsResponse} from '@interfaces/person-db.responses';
 
 export class PersonMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';

@@ -1,6 +1,6 @@
 import {FlatList, Text, View} from 'react-native';
 import ActorCard from './ActorCard';
-import type {Cast} from '../../../../core/entitites/media.entity';
+import type {Cast} from '@entitites/media.entity';
 
 interface Props {
   title: string;

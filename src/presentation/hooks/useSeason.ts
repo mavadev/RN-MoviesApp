@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
-import {movieDBFetcher} from '../../config/adapters/movieDB.adapter';
-import type {SeasonDetails} from '../../core/entitites/season.entity';
+import {movieDBFetcher} from '@adapters/movieDB.adapter';
+import type {SeasonDetails} from '@entitites/season.entity';
 
-import {getSeasonByIdUseCase} from '../../core/use-cases/season';
+import {getSeasonByIdUseCase} from '@use-cases/season';
 
 export default function useSeason(serieId: number, seasonNumber: number) {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,11 +1,11 @@
 import {ScrollView} from 'react-native';
 import type {StackScreenProps} from '@react-navigation/stack';
-import type {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
+import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
-import {usePerson} from '../../../hooks/usePerson';
-import {Loader} from '../../../components/ui';
-import {CarouselSimple} from '../../../components/carousels';
-import {PeopleProfile, PeopleDetails} from '../../../components/details/person';
+import {usePerson} from '@hooks/usePerson';
+import {Loader} from '@components/ui';
+import {CarouselSimple} from '@components/carousels';
+import {PeopleProfile, PeopleDetails} from '@components/details/person';
 
 interface Props extends StackScreenProps<BaseNavigatorParams, 'PersonScreen'> {}
 

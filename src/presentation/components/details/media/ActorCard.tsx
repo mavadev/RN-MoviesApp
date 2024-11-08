@@ -1,7 +1,7 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {BaseNavigatorParams} from '../../../navigation/BaseNavigator';
-import type {Cast} from '../../../../core/entitites/media.entity';
+import {BaseNavigatorParams} from '@navigation/BaseNavigator';
+import type {Cast} from '@entitites/media.entity';
 
 interface Props {
   actor: Cast;

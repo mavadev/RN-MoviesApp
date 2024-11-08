@@ -1,5 +1,5 @@
 import {ScrollView, Text, View} from 'react-native';
-import {HiddenText} from '../../details';
+import {HiddenText} from '@components/details';
 
 interface Props {
   genres: string[];
