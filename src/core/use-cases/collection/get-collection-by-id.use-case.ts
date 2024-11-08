@@ -1,7 +1,7 @@
 import {HttpAdapter} from '@adapters/http/http.adapter';
 import {CollectionMapper} from '@mappers/collection.mapper';
 import type {MovieDBCollectionDetailsResponse} from '@interfaces/collection-db.responses';
-import type {CollectionDetails} from '@entitites/collection.entity';
+import type {CollectionDetails} from '@entities/collection.entity';
 
 export const getCollectionByIdUseCase = async (
   fetcher: HttpAdapter,

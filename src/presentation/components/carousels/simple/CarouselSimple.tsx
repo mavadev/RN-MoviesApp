@@ -4,7 +4,7 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 import CarouselItem from './Carousel-Item';
 import useCarousel from '@hooks/useCarousel';
-import type {Media} from '@entitites/media.entity';
+import type {Media} from '@entities/media.entity';
 import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
 interface Props {

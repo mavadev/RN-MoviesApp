@@ -1,4 +1,4 @@
-import type {PersonDetails} from '@entitites/person.entity';
+import type {PersonDetails} from '@entities/person.entity';
 import type {MovieDBPeopleDetailsResponse} from '@interfaces/person-db.responses';
 
 export class PersonMapper {

@@ -1,6 +1,6 @@
 import {MediaMapper} from './media.mapper';
 import type {MovieDBPeoplePopularResponse} from '@interfaces/people-db.responses';
-import type {PeoplePopular} from '@entitites/people.entity';
+import type {PeoplePopular} from '@entities/people.entity';
 
 export class PeopleMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';

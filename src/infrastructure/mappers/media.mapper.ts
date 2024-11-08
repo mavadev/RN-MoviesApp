@@ -1,4 +1,4 @@
-import type {Cast, Media, MediaImage} from '@entitites/media.entity';
+import type {Cast, Media, MediaImage} from '@entities/media.entity';
 import type {
   MovieDBImage,
   MovieDBMediaCast,

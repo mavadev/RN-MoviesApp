@@ -5,7 +5,7 @@ import {getTrendingAllUseCase} from '@use-cases/trending/get-trending-all.use-ca
 import {getMoviesUseCase} from '@use-cases/movies/get-movies.use-case';
 import {getTvSeriesUseCase} from '@use-cases/tv_series/get-series.use-case';
 
-import type {Media} from '@entitites/media.entity';
+import type {Media} from '@entities/media.entity';
 
 export enum ContentPaths {
   Trending = '/trending/all/week',

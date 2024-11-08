@@ -2,7 +2,7 @@ import {Dimensions, StyleSheet} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
 import CarouselHorizontalItem from './CarouselHorizontal-Item';
-import type {Media} from '@entitites/media.entity';
+import type {Media} from '@entities/media.entity';
 
 interface Props {
   mediaList: Media[];

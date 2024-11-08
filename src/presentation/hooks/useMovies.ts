@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {movieDBFetcher} from '@adapters/movieDB.adapter';
 import {getMoviesUseCase} from '@use-cases/movies/get-movies.use-case';
-import type {Media} from '@entitites/media.entity';
+import type {Media} from '@entities/media.entity';
 
 export enum MoviePaths {
   NowPlaying = '/movie/now_playing',

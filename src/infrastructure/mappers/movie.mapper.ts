@@ -1,5 +1,5 @@
 import type {MovieDBMovieDetailsResponse} from '@interfaces/movie-db.responses';
-import type {MovieDetails} from '@entitites/movie.entity';
+import type {MovieDetails} from '@entities/movie.entity';
 
 export class MovieMapper {
   static PATH_IMAGE = 'https://image.tmdb.org/t/p/w500';

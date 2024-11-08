@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {movieDBFetcher} from '@adapters/movieDB.adapter';
-import type {MovieDetails} from '@entitites/movie.entity';
-import type {Media, Cast, MediaImage} from '@entitites/media.entity';
+import type {MovieDetails} from '@entities/movie.entity';
+import type {Media, Cast, MediaImage} from '@entities/media.entity';
 
 import {getMovieByIdUseCase} from '@use-cases/movie/get-movie-by-id.use-case';
 import {

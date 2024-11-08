@@ -6,7 +6,7 @@
       "@adapters/*": ["src/config/adapters/*"],
       "@helpers/*": ["src/config/helpers/*"],
       // Core
-      "@entitites/*": ["src/core/entitites/*"],
+      "@entities/*": ["src/core/entities/*"],
       "@use-cases/*": ["src/core/use-cases/*"],
       // Infrastructure 
       "@interfaces/*": ["src/infrastructure/interfaces/*"],
@@ -16,7 +16,6 @@
       "@hooks/*": ["src/presentation/hooks/*"],
       "@navigation/*": ["src/presentation/navigation/*"],
       "@screens/*": ["src/presentation/screens/*"],
-
     },
   },
   "include": ["src"],

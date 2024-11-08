@@ -1,4 +1,4 @@
-import {SeasonDetails} from '@entitites/season.entity';
+import {SeasonDetails} from '@entities/season.entity';
 import {MovieDBSeasonDetailsResponse} from '@interfaces/season-db.responses';
 
 export class SeasonMapper {

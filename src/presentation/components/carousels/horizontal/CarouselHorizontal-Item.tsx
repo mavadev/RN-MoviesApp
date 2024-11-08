@@ -2,7 +2,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Image, Pressable, StyleSheet} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
-import type {Media} from '@entitites/media.entity';
+import type {Media} from '@entities/media.entity';
 import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
 
 interface Props {

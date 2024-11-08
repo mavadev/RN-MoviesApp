@@ -1,7 +1,7 @@
 import {HttpAdapter} from '@adapters/http/http.adapter';
 import {MediaMapper} from '@mappers/media.mapper';
 import type {MovieDBMoviesResponse} from '@interfaces/movie-db.responses';
-import type {Media} from '@entitites/media.entity';
+import type {Media} from '@entities/media.entity';
 
 export const getSimilarMediaUseCase = async (
   fetcher: HttpAdapter,

@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import {SeasonDetails} from '@entitites/season.entity';
+import {SeasonDetails} from '@entities/season.entity';
 import {HiddenText} from '@components/details';
 
 interface Props {

@@ -1,7 +1,7 @@
 import {HttpAdapter} from '@adapters/http/http.adapter';
 import {MediaMapper} from '@mappers/media.mapper';
 import type {MovieDBMediaImagesResponse} from '@interfaces/media-db.responses';
-import type {Media, MediaImage} from '@entitites/media.entity';
+import type {Media, MediaImage} from '@entities/media.entity';
 
 interface ListImages {
   logo: MediaImage | null;

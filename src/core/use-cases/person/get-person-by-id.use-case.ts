@@ -1,7 +1,7 @@
 import {HttpAdapter} from '@adapters/http/http.adapter';
 import {PersonMapper} from '@mappers/person.mapper';
 import type {MovieDBPeopleDetailsResponse} from '@interfaces/person-db.responses';
-import type {PersonDetails} from '@entitites/person.entity';
+import type {PersonDetails} from '@entities/person.entity';
 
 export const getPeopleByIdUseCase = async (
   fetcher: HttpAdapter,

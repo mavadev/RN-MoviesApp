@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {movieDBFetcher} from '@adapters/movieDB.adapter';
-import type {SeasonDetails} from '@entitites/season.entity';
+import type {SeasonDetails} from '@entities/season.entity';
 
 import {getSeasonByIdUseCase} from '@use-cases/season';
 

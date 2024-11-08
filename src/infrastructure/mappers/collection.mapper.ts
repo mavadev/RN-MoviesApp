@@ -1,5 +1,5 @@
 import type {MovieDBCollectionDetailsResponse} from '@interfaces/collection-db.responses';
-import type {CollectionDetails} from '@entitites/collection.entity';
+import type {CollectionDetails} from '@entities/collection.entity';
 import {MediaMapper} from './media.mapper';
 
 export class CollectionMapper {

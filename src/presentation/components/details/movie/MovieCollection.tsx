@@ -1,7 +1,7 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import type {BaseNavigatorParams} from '@navigation/BaseNavigator';
-import type {Collection} from '@entitites/movie.entity';
+import type {Collection} from '@entities/movie.entity';
 
 interface Props {
   collection: Collection | null;

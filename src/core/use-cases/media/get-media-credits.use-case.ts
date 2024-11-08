@@ -1,7 +1,7 @@
 import {HttpAdapter} from '@adapters/http/http.adapter';
 import {MediaMapper} from '@mappers/media.mapper';
 import type {MovieDBMediaCreditsResponse} from '@interfaces/media-db.responses';
-import type {Cast, Media} from '@entitites/media.entity';
+import type {Cast, Media} from '@entities/media.entity';
 
 export const getMediaCreditsUseCase = async (
   fetcher: HttpAdapter,

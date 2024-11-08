@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {movieDBFetcher} from '@adapters/movieDB.adapter';
-import type {PeoplePopular} from '@entitites/people.entity';
+import type {PeoplePopular} from '@entities/people.entity';
 import {getPeoplePopularUseCase} from '@use-cases/people/get-people-popular.use-case';
 
 export const usePeople = (page: number = 1) => {

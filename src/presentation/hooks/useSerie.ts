@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {movieDBFetcher} from '@adapters/movieDB.adapter';
-import type {TvSerieDetails} from '@entitites/tv_serie.entity';
-import type {Media, Cast, MediaImage} from '@entitites/media.entity';
+import type {TvSerieDetails} from '@entities/tv_serie.entity';
+import type {Media, Cast, MediaImage} from '@entities/media.entity';
 
 import {getTvSerieByIdUseCase} from '@use-cases/tv_serie/get-tv-serie-by-id.use-case';
 import {
